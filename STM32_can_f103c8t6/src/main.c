@@ -47,6 +47,12 @@ CAN_HandleTypeDef hcan;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+CAN_FilterTypeDef sFilterConfig;
+CAN_TxHeaderTypeDef TxHeader;
+CAN_RxHeaderTypeDef RxHeader;
+uint8_t TxData[8];
+uint8_t RxData[8];
+uint32_t TxMailbox;
 
 /* USER CODE END PV */
 
@@ -62,6 +68,7 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint8_t uart_data;
+char tx_data[]="get_data\r\n";
 /* USER CODE END 0 */
 
 /**
@@ -96,6 +103,32 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_UART_Receive_IT(&huart2,&uart_data,1);
+  sFilterConfig.FilterBank = 0;
+  sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+  sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+  sFilterConfig.FilterIdHigh = 0x0000;
+  sFilterConfig.FilterIdLow = 0x0000;
+  sFilterConfig.FilterMaskIdHigh = 0x0000;
+  sFilterConfig.FilterMaskIdLow = 0x0000;
+  sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
+  sFilterConfig.FilterActivation=ENABLE;
+  sFilterConfig.SlaveStartFilterBank=14;
+  if(HAL_CAN_ConfigFilter(&hcan,&sFilterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if(HAL_CAN_Start(&hcan)!=HAL_OK)
+  {
+    Error_Handler();
+  }
+  TxHeader.StdId=0x321;
+  TxHeader.ExtId=0x01;
+  TxHeader.RTR = CAN_RTR_DATA;
+  TxHeader.IDE = CAN_ID_STD;
+  TxHeader.DLC = 8;
+  TxHeader.TransmitGlobalTime = DISABLE;
+  TxData[0] = 1;
+  TxData[2] = 2;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -105,6 +138,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    HAL_CAN_AddTxMessage(&hcan,&TxHeader,TxData,&TxMailbox);
+    HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
@@ -177,7 +212,6 @@ static void MX_CAN_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN CAN_Init 2 */
-
   /* USER CODE END CAN_Init 2 */
 
 }
@@ -231,7 +265,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *HUART){
   HAL_UART_Receive_IT(&huart2,&uart_data,1);
-  HAL_UART_Transmit(&huart2,&uart_data,1,1000);
+  HAL_UART_Transmit(&huart2,(uint8_t *)tx_data,sizeof(tx_data),0xFFFF);
 }
 
 /* USER CODE END 4 */
