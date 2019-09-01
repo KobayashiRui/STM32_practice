@@ -134,7 +134,6 @@ int main(void)
   TxHeader.TransmitGlobalTime = DISABLE;
   TxData[0] = 'A';
   TxData[1] = 'B';
-  int i=0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -144,15 +143,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  //HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, 1);
-	  //HAL_Delay(100);
-	  //HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, 0);
-	  //HAL_Delay(100);
-     //for(; i < 10; i++)
-     //{
-    	// HAL_CAN_AddTxMessage(&hcan,&TxHeader,TxData,&TxMailbox);
-    	// HAL_Delay(100);
-     //}
+	 HAL_CAN_AddTxMessage(&hcan,&TxHeader,TxData,&TxMailbox);
+	 HAL_Delay(100);
   }
   /* USER CODE END 3 */
 }
@@ -294,11 +286,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_CAN_TxMailbox0CompleteCallack(CAN_HandleTypeDef *hcan)
 {
-	//HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_3);
-	//HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,1);
 	  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,1);
-	 // HAL_Delay(1000);
-	 // HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,0);
 }
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan_)
