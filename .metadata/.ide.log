@@ -3580,3 +3580,638 @@
 
 
 2019-09-01 17:30:04,221 [INFO] Activator:177 - !SESSION log4j initialized
+2019-09-02 15:06:02,535 [INFO] ApplicationProperties:181 - Using Application install path: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903
+2019-09-02 15:06:02,553 [INFO] DbMcusXml:68 - Set database path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/mcu/
+2019-09-02 15:06:02,558 [INFO] DbBoardsPdsc:54 - Set plugin database path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/boardmanager/
+2019-09-02 15:06:02,558 [INFO] DbMcus:264 - Set plugin images path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/mcufinder/images/
+2019-09-02 15:06:02,559 [INFO] DbBoards:232 - Set plugin images path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/mcufinder/images/
+2019-09-02 15:06:02,561 [INFO] APIGFXSelector:72 - Set database path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/mcufinder/mcu/
+2019-09-02 15:06:02,569 [INFO] DbMcusAds:72 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,570 [INFO] DbMcusDocs:92 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,572 [INFO] DbMcusJson:59 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,573 [INFO] DbBoardsDocs:84 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,574 [INFO] DbBoardsJson:51 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,578 [INFO] CrossReferenceDbSqlite:197 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/cs/
+2019-09-02 15:06:02,679 [INFO] RulesReader:52 - Compatibility file has been processed (156 Rules)
+2019-09-02 15:06:02,778 [INFO] MicroXplorer:521 - Detected Java Version = 1.8.0_202
+2019-09-02 15:06:02,779 [INFO] DbMcusXml:68 - Set database path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/mcu/
+2019-09-02 15:06:02,779 [INFO] DbBoardsPdsc:54 - Set plugin database path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/boardmanager/
+2019-09-02 15:06:02,780 [INFO] DbMcus:264 - Set plugin images path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/mcufinder/images/
+2019-09-02 15:06:02,780 [INFO] DbBoards:232 - Set plugin images path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/mcufinder/images/
+2019-09-02 15:06:02,781 [INFO] APIGFXSelector:72 - Set database path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/mcufinder/mcu/
+2019-09-02 15:06:02,781 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,781 [INFO] DbMcusAds:72 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,782 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,782 [INFO] DbMcusDocs:92 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,782 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,782 [INFO] DbMcusJson:59 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,783 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,783 [INFO] DbBoardsDocs:84 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,783 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,784 [INFO] DbBoardsJson:51 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,784 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,784 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,785 [INFO] CrossReferenceDbSqlite:197 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/cs/
+2019-09-02 15:06:02,860 [INFO] MainPanel:211 - HeapMemory: 319815680
+2019-09-02 15:06:02,952 [INFO] DbMcusXml:68 - Set database path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/mcu/
+2019-09-02 15:06:02,952 [INFO] DbBoardsPdsc:54 - Set plugin database path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/boardmanager/
+2019-09-02 15:06:02,953 [INFO] DbMcus:264 - Set plugin images path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/mcufinder/images/
+2019-09-02 15:06:02,954 [INFO] DbBoards:232 - Set plugin images path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/mcufinder/images/
+2019-09-02 15:06:02,954 [INFO] APIGFXSelector:72 - Set database path to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/plugins/mcufinder/mcu/
+2019-09-02 15:06:02,955 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,956 [INFO] DbMcusAds:72 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,956 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,957 [INFO] DbMcusDocs:92 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,957 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,958 [INFO] DbMcusJson:59 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,958 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,958 [INFO] DbBoardsDocs:84 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,959 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,959 [INFO] DbBoardsJson:51 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/
+2019-09-02 15:06:02,959 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,960 [WARN] DbFile:31 - Overriding database path with different value: C:\Users\kobay\.stmcufinder\plugins\mcufinder/ => C:\Users\kobay\.stmcufinder\plugins\mcufinder
+2019-09-02 15:06:02,960 [INFO] CrossReferenceDbSqlite:197 - Set database path to: C:\Users\kobay\.stmcufinder\plugins\mcufinder//mcu/cs/
+2019-09-02 15:06:02,978 [INFO] ApplicationProperties:181 - Using Application install path: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903
+2019-09-02 15:06:02,980 [INFO] PluginManage:178 - Search for loadable plugins [exclusion list=]
+2019-09-02 15:06:02,982 [INFO] PluginManage:292 - Check plugin analytics
+2019-09-02 15:06:02,990 [INFO] PluginManage:342 - Loaded plugin analytics (category:tool,tabindex:-1)
+2019-09-02 15:06:02,990 [INFO] PluginManage:292 - Check plugin clock
+2019-09-02 15:06:03,002 [INFO] PluginManage:342 - Loaded plugin clock (category:base,tabindex:2)
+2019-09-02 15:06:03,003 [INFO] PluginManage:292 - Check plugin ddr
+2019-09-02 15:06:03,006 [INFO] PluginManage:342 - Loaded plugin ddr (category:tool,tabindex:6)
+2019-09-02 15:06:03,007 [INFO] PluginManage:292 - Check plugin filemanager
+2019-09-02 15:06:03,136 [INFO] PluginManage:342 - Loaded plugin filemanager (category:base,tabindex:10)
+2019-09-02 15:06:03,136 [INFO] PluginManage:292 - Check plugin ipmanager
+2019-09-02 15:06:03,143 [INFO] PluginManage:342 - Loaded plugin ipmanager (category:base,tabindex:5)
+2019-09-02 15:06:03,144 [INFO] PluginManage:292 - Check plugin pinoutandconfiguration
+2019-09-02 15:06:03,156 [INFO] PluginManage:342 - Loaded plugin pinoutandconfiguration (category:base,tabindex:1)
+2019-09-02 15:06:03,156 [INFO] PluginManage:292 - Check plugin pinoutconfig
+2019-09-02 15:06:03,180 [INFO] PluginManage:342 - Loaded plugin pinoutconfig (category:base,tabindex:0)
+2019-09-02 15:06:03,180 [INFO] PluginManage:292 - Check plugin power
+2019-09-02 15:06:03,191 [INFO] PluginManage:342 - Loaded plugin power (category:power,tabindex:4)
+2019-09-02 15:06:03,191 [INFO] PluginManage:292 - Check plugin projectmanager
+2019-09-02 15:06:03,206 [INFO] PluginManage:342 - Loaded plugin projectmanager (category:projectmanager,tabindex:3)
+2019-09-02 15:06:03,206 [INFO] PluginManage:292 - Check plugin thirdparty
+2019-09-02 15:06:03,238 [INFO] ThirdPartyDb:294 - Open Third Party DataBase File (C:/Users/kobay/.stm32cubemx/plugins/thirdparty/db/thirdparties_db.xml) : 13 ms. number of Sw pack : 5
+2019-09-02 15:06:03,249 [INFO] PluginManage:342 - Loaded plugin thirdparty (category:base,tabindex:-1)
+2019-09-02 15:06:03,250 [INFO] PluginManage:292 - Check plugin tools
+2019-09-02 15:06:03,252 [INFO] PluginManage:342 - Loaded plugin tools (category:base,tabindex:7)
+2019-09-02 15:06:03,253 [INFO] PluginManage:292 - Check plugin updater
+2019-09-02 15:06:03,267 [INFO] PluginManage:342 - Loaded plugin updater (category:base,tabindex:12)
+2019-09-02 15:06:03,268 [INFO] PluginManage:265 - PluginManage : Loaded plugins [12]
+2019-09-02 15:06:03,453 [INFO] PinOutPanel:1367 - setPackage(No Configuration,No Configuration)
+2019-09-02 15:06:03,544 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,545 [INFO] PluginManager:200 - loadIPPluginJar : add adc
+2019-09-02 15:06:03,548 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,548 [INFO] PluginManager:200 - loadIPPluginJar : add aes
+2019-09-02 15:06:03,551 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,551 [INFO] PluginManager:200 - loadIPPluginJar : add can
+2019-09-02 15:06:03,553 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,554 [INFO] PluginManager:200 - loadIPPluginJar : add comp
+2019-09-02 15:06:03,557 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,557 [INFO] PluginManager:200 - loadIPPluginJar : add cryp
+2019-09-02 15:06:03,560 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,560 [INFO] PluginManager:200 - loadIPPluginJar : add dfsdm
+2019-09-02 15:06:03,567 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,568 [INFO] PluginManager:200 - loadIPPluginJar : add dma
+2019-09-02 15:06:03,570 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,571 [INFO] PluginManager:200 - loadIPPluginJar : add fatfs
+2019-09-02 15:06:03,578 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,578 [INFO] PluginManager:200 - loadIPPluginJar : add fmc
+2019-09-02 15:06:03,586 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,586 [INFO] PluginManager:200 - loadIPPluginJar : add freertos
+2019-09-02 15:06:03,588 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,589 [INFO] PluginManager:200 - loadIPPluginJar : add genericplugin
+2019-09-02 15:06:03,599 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,600 [INFO] PluginManager:200 - loadIPPluginJar : add gfxmmu
+2019-09-02 15:06:03,602 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,603 [INFO] PluginManager:200 - loadIPPluginJar : add gfxsimulator
+2019-09-02 15:06:03,608 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,609 [INFO] PluginManager:200 - loadIPPluginJar : add gic
+2019-09-02 15:06:03,614 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,614 [INFO] PluginManager:200 - loadIPPluginJar : add gpio
+2019-09-02 15:06:03,617 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,618 [INFO] PluginManager:200 - loadIPPluginJar : add hash
+2019-09-02 15:06:03,621 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,621 [INFO] PluginManager:200 - loadIPPluginJar : add i2c
+2019-09-02 15:06:03,624 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,624 [INFO] PluginManager:200 - loadIPPluginJar : add i2s
+2019-09-02 15:06:03,629 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,629 [INFO] PluginManager:200 - loadIPPluginJar : add ipddr
+2019-09-02 15:06:03,632 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,632 [INFO] PluginManager:200 - loadIPPluginJar : add ltdc
+2019-09-02 15:06:03,636 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,637 [INFO] PluginManager:200 - loadIPPluginJar : add mdma
+2019-09-02 15:06:03,642 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,642 [INFO] PluginManager:200 - loadIPPluginJar : add nvic
+2019-09-02 15:06:03,645 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,646 [INFO] PluginManager:200 - loadIPPluginJar : add opamp
+2019-09-02 15:06:03,649 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,649 [INFO] PluginManager:200 - loadIPPluginJar : add pdm2pcm
+2019-09-02 15:06:03,656 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,658 [INFO] PluginManager:200 - loadIPPluginJar : add plateformsettings
+2019-09-02 15:06:03,661 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,661 [INFO] PluginManager:200 - loadIPPluginJar : add quadspi
+2019-09-02 15:06:03,665 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,665 [INFO] PluginManager:200 - loadIPPluginJar : add resmgrutility
+2019-09-02 15:06:03,669 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,670 [INFO] PluginManager:200 - loadIPPluginJar : add sai
+2019-09-02 15:06:03,672 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,673 [INFO] PluginManager:200 - loadIPPluginJar : add spi
+2019-09-02 15:06:03,676 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,676 [INFO] PluginManager:200 - loadIPPluginJar : add stm32_wpan
+2019-09-02 15:06:03,679 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,679 [INFO] PluginManager:200 - loadIPPluginJar : add tim
+2019-09-02 15:06:03,683 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,683 [INFO] PluginManager:200 - loadIPPluginJar : add touchsensing
+2019-09-02 15:06:03,686 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,686 [INFO] PluginManager:200 - loadIPPluginJar : add tracer_emb
+2019-09-02 15:06:03,689 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,689 [INFO] PluginManager:200 - loadIPPluginJar : add ts
+2019-09-02 15:06:03,692 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,692 [INFO] PluginManager:200 - loadIPPluginJar : add tsc
+2019-09-02 15:06:03,694 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,695 [INFO] PluginManager:200 - loadIPPluginJar : add ucpd
+2019-09-02 15:06:03,698 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:03,698 [INFO] PluginManager:200 - loadIPPluginJar : add usart
+2019-09-02 15:06:04,275 [INFO] BoardConnectionPanel:217 - [DDR PANEL] osNameString: Windows
+2019-09-02 15:06:04,621 [FATAL] Updater:277 - Updater called before beeing initialized
+2019-09-02 15:06:05,068 [FATAL] Updater:277 - Updater called before beeing initialized
+2019-09-02 15:06:05,081 [INFO] PinOutPanel:1367 - setPackage(No Configuration,No Configuration)
+2019-09-02 15:06:05,082 [FATAL] Updater:277 - Updater called before beeing initialized
+2019-09-02 15:06:05,086 [INFO] MainDdrPanel:82 - [DDR PANEL] SETTER - Set cubeProgrammerPath to: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.win32_1.0.0.201904021149\tools\bin
+2019-09-02 15:06:05,091 [INFO] Updater:860 - Updater Version found : 5.3.0
+2019-09-02 15:06:05,105 [INFO] ApplicationProperties:181 - Using Application install path: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903
+2019-09-02 15:06:05,183 [ERROR] ServerAccessManage:998 - Warning during Server Connexion :  Unknown host sw-center.st.com
+2019-09-02 15:06:05,185 [ERROR] ServerAccessManage:998 - Warning during Server Connexion :  Unknown host www.ebuc23.com
+2019-09-02 15:06:05,187 [INFO] MainUpdater:2040 - connection check result : 22
+2019-09-02 15:06:05,189 [INFO] MainUpdater:229 - Updater Check For Update Now.
+2019-09-02 15:06:05,190 [INFO] MicroXplorer:401 - Change Database Version : DB.5.0.30
+2019-09-02 15:06:05,213 [INFO] CheckServerUpdateThread:121 - End of CheckServer Thread
+2019-09-02 15:06:05,393 [ERROR] ServerAccessManage:998 - Warning during Server Connexion :  Unknown host sw-center.st.com
+2019-09-02 15:06:05,394 [ERROR] ServerAccessManage:998 - Warning during Server Connexion :  Unknown host www.ebuc23.com
+2019-09-02 15:06:05,395 [INFO] MainUpdater:2040 - connection check result : 22
+2019-09-02 15:06:05,397 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] proxy connection test failed
+2019-09-02 15:06:06,266 [INFO] ThirdPartyDb:264 - Close Third Party DataBase File (C:/Users/kobay/.stm32cubemx/plugins/thirdparty/db/thirdparties_db.xml)
+2019-09-02 15:06:06,284 [INFO] ThirdPartyDb:294 - Open Third Party DataBase File (C:/Users/kobay/.stm32cubemx/plugins/thirdparty/db/thirdparties_db.xml) : 2 ms. number of Sw pack : 5
+2019-09-02 15:06:06,284 [INFO] ThirdPartyDb:264 - Close Third Party DataBase File (C:/Users/kobay/.stm32cubemx/plugins/thirdparty/db/thirdparties_db.xml)
+2019-09-02 15:06:06,292 [INFO] IntegrityCheckThread:97 - End integrity checks thread
+2019-09-02 15:06:10,843 [ERROR] ServerAccessManage:998 - Warning during Server Connexion :  Unknown host sw-center.st.com
+2019-09-02 15:06:10,845 [ERROR] ServerAccessManage:998 - Warning during Server Connexion :  Unknown host www.ebuc23.com
+2019-09-02 15:06:10,846 [INFO] MainUpdater:2040 - connection check result : 22
+2019-09-02 15:06:15,406 [ERROR] ServerAccessManage:998 - Warning during Server Connexion :  Unknown host sw-center.st.com
+2019-09-02 15:06:15,409 [ERROR] ServerAccessManage:998 - Warning during Server Connexion :  Unknown host www.ebuc23.com
+2019-09-02 15:06:15,411 [INFO] MainUpdater:2040 - connection check result : 22
+2019-09-02 15:06:17,030 [INFO] MicroXplorer:371 - Change Database Path : 
+2019-09-02 15:06:17,030 [INFO] MicroXplorer:401 - Change Database Version : DB.5.0.30
+2019-09-02 15:06:17,034 [INFO] PinOutPanel:1367 - setPackage(No Configuration,No Configuration)
+2019-09-02 15:06:17,035 [INFO] UtilMem:74 - Begin LoadConfig() Used Memory: 184616152 Bytes (319815680)
+2019-09-02 15:06:17,036 [INFO] MicroXplorer:371 - Change Database Path : 
+2019-09-02 15:06:17,037 [INFO] MicroXplorer:401 - Change Database Version : DB.5.0.30
+2019-09-02 15:06:17,037 [INFO] OpenFileManager:269 - Change cursor
+2019-09-02 15:06:18,920 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Invalid parameter (CECFreq_Value)
+2019-09-02 15:06:18,921 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Invalid parameter (FamilyName)
+2019-09-02 15:06:18,921 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Invalid parameter (HSICECFreq_Value)
+2019-09-02 15:06:18,923 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Invalid parameter (TIM2Freq_Value)
+2019-09-02 15:06:18,923 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Invalid parameter (TimSysFreq_Value)
+2019-09-02 15:06:18,923 [INFO] ImportTextPane:162 - (OptionalMessage_ERROR) IP (RCC) : Parameter (USART2Freq_Value) has invalid value (8000000)
+2019-09-02 15:06:19,077 [INFO] UtilMem:74 - End LoadConfig() Used Memory: 204866472 Bytes (319815680)
+2019-09-02 15:06:19,084 [INFO] ThirdPartyDb:294 - Open Third Party DataBase File (C:/Users/kobay/.stm32cubemx/plugins/thirdparty/db/thirdparties_db.xml) : 2 ms. number of Sw pack : 5
+2019-09-02 15:06:19,138 [INFO] ThirdParty:912 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-BLE1 4.4.0
+2019-09-02 15:06:19,138 [INFO] ThirdParty:912 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-MEMS1 6.2.0
+2019-09-02 15:06:19,138 [INFO] ThirdParty:912 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AI 4.0.0
+2019-09-02 15:06:19,138 [INFO] ThirdParty:912 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-NFC4 1.4.0
+2019-09-02 15:06:19,139 [INFO] ThirdParty:912 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-GNSS1 3.0.0
+2019-09-02 15:06:19,385 [INFO] PinOutPanel:1367 - setPackage(No Configuration,No Configuration)
+2019-09-02 15:06:19,388 [INFO] PinOutPanel:1367 - setPackage(STM32F303K8Tx,LQFP32)
+2019-09-02 15:06:20,449 [INFO] UtilMem:74 - Before build in PCC Used Memory: 152386584 Bytes (319815680)
+2019-09-02 15:06:20,756 [INFO] SharedServices:71 - Folder for power plug-in: C:/Users/kobay/.stm32cubemx/plugins/power
+2019-09-02 15:06:20,757 [INFO] UtilMem:74 - After build in PCC Used Memory: 167592976 Bytes (319815680)
+2019-09-02 15:06:20,766 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 15:06:20,766 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,767 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,768 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,768 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,768 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,768 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,769 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,769 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,769 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,769 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,769 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,770 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,770 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,770 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,770 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,770 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,770 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,771 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,771 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,771 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,771 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,772 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,772 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,772 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,772 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,773 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,773 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,773 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,773 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,774 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,774 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,774 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,774 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,774 [INFO] IPUIPlugin:63 - create IPUIPlugin
+2019-09-02 15:06:20,789 [INFO] Can:56 - Can Add PropertyChangeListener com.st.microxplorer.plugins.ip.can.Can@12744a34
+2019-09-02 15:06:20,794 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 15:06:20,808 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] toolchainItems.length=====1
+2019-09-02 15:06:20,812 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:20,814 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:20,897 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:20,899 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:20,900 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:20,901 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:20,903 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:20,904 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:20,911 [INFO] OpenFileManager:289 - Restore cursor
+2019-09-02 15:06:20,914 [INFO] DbMcusXml:106 - Load MCU database from C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\/mcu/families.xml
+2019-09-02 15:06:20,919 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:20,921 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:20,923 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:20,924 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:20,925 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:20,926 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:21,020 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 15:06:21,033 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:21,036 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:21,038 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:21,041 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:21,043 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:21,045 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:21,105 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 15:06:21,750 [INFO] DbMcusJson:87 - JSON generation date=Fri Jul 19 19:04:23 JST 2019 (1563530663)
+2019-09-02 15:06:22,912 [INFO] DbMcus:193 - Found 1496 MCUs (1455 are supported by CubeMX, 1455 are visible in CubeMX)
+2019-09-02 15:06:22,912 [INFO] ApiDb:147 - User favorites file not found: C:\Users\kobay/.stm32cubemx/favorites.mcus.txt
+2019-09-02 15:06:22,912 [INFO] DbMcus:205 - Set 0 / 0 favorites MCUs
+2019-09-02 15:06:26,598 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 15:06:30,765 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Tab changed to: Clock Configuration
+2019-09-02 15:06:35,070 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 15:06:37,043 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 15:06:39,003 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 193094288 Bytes (350224384)
+2019-09-02 15:06:39,007 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:39,008 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:39,010 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:39,011 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:39,012 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:39,014 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:40,454 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 201124368 Bytes (350224384)
+2019-09-02 15:06:40,457 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:40,459 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:40,460 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:40,462 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:40,464 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 15:06:40,465 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 15:06:40,973 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: NVIC
+2019-09-02 15:06:40,973 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: USART
+2019-09-02 15:06:40,973 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: SYS
+2019-09-02 15:06:40,974 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: CAN
+2019-09-02 15:06:40,974 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: RCC
+2019-09-02 15:06:40,975 [INFO] CodeGenerator:583 - code generatio: config db path: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\
+2019-09-02 15:06:41,299 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp_save
+2019-09-02 15:06:41,599 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp
+2019-09-02 15:06:41,822 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp_save
+2019-09-02 15:06:41,941 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp
+2019-09-02 15:06:42,087 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 15:06:42,088 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for CAN
+2019-09-02 15:06:42,089 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 15:06:42,091 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 15:06:42,092 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for SYS
+2019-09-02 15:06:42,093 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 15:06:42,095 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 15:06:42,097 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for USART
+2019-09-02 15:06:42,098 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 15:06:42,100 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for NVIC
+2019-09-02 15:06:42,101 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 15:06:42,111 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c_save
+2019-09-02 15:06:42,262 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c
+2019-09-02 15:06:42,269 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h_save
+2019-09-02 15:06:42,380 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h
+2019-09-02 15:06:42,394 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c_save
+2019-09-02 15:06:42,567 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c
+2019-09-02 15:06:42,577 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp_save
+2019-09-02 15:06:42,666 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp
+2019-09-02 15:06:42,675 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h_save
+2019-09-02 15:06:42,775 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h
+2019-09-02 15:06:42,800 [WARN] IPConfigManager:2562 - IP not found : gpio
+2019-09-02 15:06:42,801 [WARN] CodeGenerator:2617 - IP not found : gpio
+2019-09-02 15:06:42,808 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h_save
+2019-09-02 15:06:42,928 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h
+2019-09-02 15:06:42,938 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c_save
+2019-09-02 15:06:43,108 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c
+2019-09-02 15:06:44,009 [INFO] ProjectBuilder:1570 - Time for Copy HAL[1] : 132mS.
+2019-09-02 15:06:44,014 [INFO] ProjectBuilder:2138 - Project Generator version: 3.4.0
+2019-09-02 15:06:44,357 [INFO] ConfigFileManager:879 - The Die is : DIE438
+2019-09-02 15:06:44,360 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] configName ==Arm Cortex-M4
+2019-09-02 15:06:44,502 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="RAM" access="xrw" start="0x20000000" size="12"
+2019-09-02 15:06:44,503 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="CCMRAM" access="rw" start="0x10000000" size="4"
+2019-09-02 15:06:44,504 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="FLASH" access="rx" start="0x8000000" size="64"
+2019-09-02 15:06:44,695 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] namefile= STM32CubeIDE
+2019-09-02 15:06:44,696 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============generate
+2019-09-02 15:06:49,665 [INFO] ProjectBuilder:2232 - Time for Generating toolchain IDE Files: 5651mS.
+2019-09-02 15:06:49,666 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 1mS.
+2019-09-02 15:06:49,670 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 0mS.
+2019-09-02 15:06:50,981 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Tab changed to: Pinout & Configuration
+2019-09-02 15:06:57,889 [INFO] NvicIntPanel:85 - NVIC parent = javax.swing.JTabbedPane[,0,43,482x282,layout=com.st.microxplorer.stobjectsui.STTabbedPaneUI$TabbedPaneLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=352,maximumSize=,minimumSize=,preferredSize=,haveRegistered=false,tabPlacement=TOP]
+2019-09-02 15:20:10,722 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Tab changed to: Clock Configuration
+2019-09-02 15:20:12,298 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Tab changed to: Pinout & Configuration
+2019-09-02 15:20:34,119 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Tab changed to: Clock Configuration
+2019-09-02 15:29:09,337 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Tab changed to: Pinout & Configuration
+2019-09-02 16:52:17,076 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 16:52:37,169 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 16:52:55,915 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Tab changed to: Clock Configuration
+2019-09-02 16:52:57,129 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Tab changed to: Project Manager
+2019-09-02 16:52:57,999 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Tab changed to: Pinout & Configuration
+2019-09-02 17:01:47,847 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 17:01:52,745 [INFO] NvicIntPanel:85 - NVIC parent = javax.swing.JTabbedPane[,0,43,521x379,layout=com.st.microxplorer.stobjectsui.STTabbedPaneUI$TabbedPaneLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=352,maximumSize=,minimumSize=,preferredSize=,haveRegistered=false,tabPlacement=TOP]
+2019-09-02 17:05:28,064 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 469877888 Bytes (838860800)
+2019-09-02 17:05:28,067 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:05:28,069 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:05:28,071 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:05:28,073 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:05:28,075 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:05:28,076 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:05:29,265 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 479306336 Bytes (838860800)
+2019-09-02 17:05:29,270 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:05:29,272 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:05:29,275 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:05:29,277 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:05:29,279 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:05:29,282 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:05:29,416 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: NVIC
+2019-09-02 17:05:29,416 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: USART
+2019-09-02 17:05:29,416 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: SYS
+2019-09-02 17:05:29,416 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: CAN
+2019-09-02 17:05:29,416 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: RCC
+2019-09-02 17:05:29,417 [INFO] CodeGenerator:583 - code generatio: config db path: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\
+2019-09-02 17:05:29,538 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp_save
+2019-09-02 17:05:29,609 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp
+2019-09-02 17:05:29,641 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp_save
+2019-09-02 17:05:29,703 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp
+2019-09-02 17:05:29,777 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 17:05:29,779 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for CAN
+2019-09-02 17:05:29,780 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:05:29,781 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 17:05:29,782 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for SYS
+2019-09-02 17:05:29,783 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:05:29,784 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 17:05:29,785 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for USART
+2019-09-02 17:05:29,786 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:05:29,787 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for NVIC
+2019-09-02 17:05:29,788 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:05:29,795 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c_save
+2019-09-02 17:05:29,874 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c
+2019-09-02 17:05:29,881 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h_save
+2019-09-02 17:05:29,936 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h
+2019-09-02 17:05:29,945 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c_save
+2019-09-02 17:05:30,052 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c
+2019-09-02 17:05:30,058 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp_save
+2019-09-02 17:05:30,120 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp
+2019-09-02 17:05:30,129 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h_save
+2019-09-02 17:05:30,285 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h
+2019-09-02 17:05:30,299 [WARN] IPConfigManager:2562 - IP not found : gpio
+2019-09-02 17:05:30,299 [WARN] CodeGenerator:2617 - IP not found : gpio
+2019-09-02 17:05:30,305 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h_save
+2019-09-02 17:05:30,367 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h
+2019-09-02 17:05:30,377 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c_save
+2019-09-02 17:05:30,469 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c
+2019-09-02 17:05:30,877 [INFO] ProjectBuilder:1570 - Time for Copy HAL[1] : 92mS.
+2019-09-02 17:05:30,879 [INFO] ProjectBuilder:2138 - Project Generator version: 3.4.0
+2019-09-02 17:05:31,046 [INFO] ConfigFileManager:879 - The Die is : DIE438
+2019-09-02 17:05:31,049 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] configName ==Arm Cortex-M4
+2019-09-02 17:05:31,130 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="RAM" access="xrw" start="0x20000000" size="12"
+2019-09-02 17:05:31,132 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="CCMRAM" access="rw" start="0x10000000" size="4"
+2019-09-02 17:05:31,133 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="FLASH" access="rx" start="0x8000000" size="64"
+2019-09-02 17:05:31,261 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] namefile= STM32CubeIDE
+2019-09-02 17:05:31,262 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============update
+2019-09-02 17:05:31,983 [INFO] ProjectBuilder:2232 - Time for Generating toolchain IDE Files: 1104mS.
+2019-09-02 17:05:31,984 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 1mS.
+2019-09-02 17:05:31,988 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 0mS.
+2019-09-02 17:34:57,436 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 17:34:59,504 [INFO] NvicIntPanel:85 - NVIC parent = javax.swing.JTabbedPane[,0,43,521x379,layout=com.st.microxplorer.stobjectsui.STTabbedPaneUI$TabbedPaneLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=352,maximumSize=,minimumSize=,preferredSize=,haveRegistered=false,tabPlacement=TOP]
+2019-09-02 17:46:47,619 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 17:49:28,920 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 489255528 Bytes (931135488)
+2019-09-02 17:49:28,924 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:49:28,928 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:49:28,931 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:49:28,934 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:49:28,937 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:49:28,940 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:49:30,406 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 498692712 Bytes (931135488)
+2019-09-02 17:49:30,409 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:49:30,412 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:49:30,413 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:49:30,414 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:49:30,416 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:49:30,418 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:49:30,535 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: NVIC
+2019-09-02 17:49:30,535 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: USART
+2019-09-02 17:49:30,535 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: SYS
+2019-09-02 17:49:30,535 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: CAN
+2019-09-02 17:49:30,535 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: RCC
+2019-09-02 17:49:30,536 [INFO] CodeGenerator:583 - code generatio: config db path: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\
+2019-09-02 17:49:30,666 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp_save
+2019-09-02 17:49:30,716 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp
+2019-09-02 17:49:30,745 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp_save
+2019-09-02 17:49:30,800 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp
+2019-09-02 17:49:30,876 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 17:49:30,878 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for CAN
+2019-09-02 17:49:30,878 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:49:30,880 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 17:49:30,881 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for SYS
+2019-09-02 17:49:30,882 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:49:30,884 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 17:49:30,885 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for USART
+2019-09-02 17:49:30,886 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:49:30,887 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for NVIC
+2019-09-02 17:49:30,888 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:49:30,896 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c_save
+2019-09-02 17:49:31,005 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c
+2019-09-02 17:49:31,014 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h_save
+2019-09-02 17:49:31,070 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h
+2019-09-02 17:49:31,080 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c_save
+2019-09-02 17:49:31,182 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c
+2019-09-02 17:49:31,188 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp_save
+2019-09-02 17:49:31,253 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp
+2019-09-02 17:49:31,260 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h_save
+2019-09-02 17:49:31,321 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h
+2019-09-02 17:49:31,331 [WARN] IPConfigManager:2562 - IP not found : gpio
+2019-09-02 17:49:31,332 [WARN] CodeGenerator:2617 - IP not found : gpio
+2019-09-02 17:49:31,337 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h_save
+2019-09-02 17:49:31,405 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h
+2019-09-02 17:49:31,414 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c_save
+2019-09-02 17:49:31,595 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c
+2019-09-02 17:49:32,065 [INFO] ProjectBuilder:1570 - Time for Copy HAL[1] : 94mS.
+2019-09-02 17:49:32,066 [INFO] ProjectBuilder:2138 - Project Generator version: 3.4.0
+2019-09-02 17:49:32,252 [INFO] ConfigFileManager:879 - The Die is : DIE438
+2019-09-02 17:49:32,254 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] configName ==Arm Cortex-M4
+2019-09-02 17:49:32,349 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="RAM" access="xrw" start="0x20000000" size="12"
+2019-09-02 17:49:32,350 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="CCMRAM" access="rw" start="0x10000000" size="4"
+2019-09-02 17:49:32,351 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="FLASH" access="rx" start="0x8000000" size="64"
+2019-09-02 17:49:32,461 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] namefile= STM32CubeIDE
+2019-09-02 17:49:32,462 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============update
+2019-09-02 17:49:33,003 [INFO] ProjectBuilder:2232 - Time for Generating toolchain IDE Files: 937mS.
+2019-09-02 17:49:33,004 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 1mS.
+2019-09-02 17:49:33,008 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 0mS.
+2019-09-02 17:58:55,572 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:58:55,573 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:58:55,574 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:58:55,576 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:58:55,577 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:58:55,578 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:58:58,063 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:58:58,064 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:58:58,066 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:58:58,067 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:58:58,068 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:58:58,069 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:59:00,137 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 392160760 Bytes (1022361600)
+2019-09-02 17:59:00,141 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:59:00,142 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:59:00,144 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:59:00,145 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:59:00,146 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:59:00,147 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:59:01,702 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 401576512 Bytes (1022361600)
+2019-09-02 17:59:01,706 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:59:01,708 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:59:01,711 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:59:01,713 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:59:01,715 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 17:59:01,716 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 17:59:01,829 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: NVIC
+2019-09-02 17:59:01,830 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: USART
+2019-09-02 17:59:01,830 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: SYS
+2019-09-02 17:59:01,830 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: CAN
+2019-09-02 17:59:01,830 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: RCC
+2019-09-02 17:59:01,831 [INFO] CodeGenerator:583 - code generatio: config db path: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\
+2019-09-02 17:59:01,963 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp_save
+2019-09-02 17:59:02,011 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp
+2019-09-02 17:59:02,033 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp_save
+2019-09-02 17:59:02,085 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp
+2019-09-02 17:59:02,156 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 17:59:02,157 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for CAN
+2019-09-02 17:59:02,159 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:59:02,160 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 17:59:02,161 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for SYS
+2019-09-02 17:59:02,161 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:59:02,161 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 17:59:02,162 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for USART
+2019-09-02 17:59:02,163 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:59:02,165 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for NVIC
+2019-09-02 17:59:02,166 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 17:59:02,172 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c_save
+2019-09-02 17:59:02,246 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c
+2019-09-02 17:59:02,256 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h_save
+2019-09-02 17:59:02,321 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h
+2019-09-02 17:59:02,333 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c_save
+2019-09-02 17:59:02,430 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c
+2019-09-02 17:59:02,437 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp_save
+2019-09-02 17:59:02,493 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp
+2019-09-02 17:59:02,504 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h_save
+2019-09-02 17:59:02,589 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h
+2019-09-02 17:59:02,602 [WARN] IPConfigManager:2562 - IP not found : gpio
+2019-09-02 17:59:02,603 [WARN] CodeGenerator:2617 - IP not found : gpio
+2019-09-02 17:59:02,610 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h_save
+2019-09-02 17:59:02,696 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h
+2019-09-02 17:59:02,707 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c_save
+2019-09-02 17:59:02,839 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c
+2019-09-02 17:59:03,292 [INFO] ProjectBuilder:1570 - Time for Copy HAL[1] : 86mS.
+2019-09-02 17:59:03,293 [INFO] ProjectBuilder:2138 - Project Generator version: 3.4.0
+2019-09-02 17:59:03,606 [INFO] ConfigFileManager:879 - The Die is : DIE438
+2019-09-02 17:59:03,608 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] configName ==Arm Cortex-M4
+2019-09-02 17:59:03,702 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="RAM" access="xrw" start="0x20000000" size="12"
+2019-09-02 17:59:03,704 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="CCMRAM" access="rw" start="0x10000000" size="4"
+2019-09-02 17:59:03,705 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="FLASH" access="rx" start="0x8000000" size="64"
+2019-09-02 17:59:03,818 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] namefile= STM32CubeIDE
+2019-09-02 17:59:03,819 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============update
+2019-09-02 17:59:04,360 [INFO] ProjectBuilder:2232 - Time for Generating toolchain IDE Files: 1067mS.
+2019-09-02 17:59:04,361 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 1mS.
+2019-09-02 17:59:04,365 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 0mS.
+2019-09-02 18:04:39,243 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 18:04:41,087 [INFO] BlockDiagram:1818 - stop enableDisableButtons
+2019-09-02 18:10:34,759 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:34,760 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:34,761 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:34,763 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 18:10:34,765 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 18:10:34,767 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:38,567 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:38,570 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:38,572 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:38,573 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 18:10:38,575 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 18:10:38,576 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:43,865 [INFO] NvicIntPanel:85 - NVIC parent = javax.swing.JTabbedPane[,0,43,521x379,layout=com.st.microxplorer.stobjectsui.STTabbedPaneUI$TabbedPaneLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=352,maximumSize=,minimumSize=,preferredSize=,haveRegistered=false,tabPlacement=TOP]
+2019-09-02 18:10:46,427 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 397100800 Bytes (1022361600)
+2019-09-02 18:10:46,430 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:46,432 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:46,433 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:46,435 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 18:10:46,437 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 18:10:46,438 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:48,197 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 406835000 Bytes (1022361600)
+2019-09-02 18:10:48,200 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:48,202 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:48,204 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:48,207 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 18:10:48,208 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isRootSelectionSupported
+2019-09-02 18:10:48,211 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============isUnderRootDefaultMode
+2019-09-02 18:10:48,325 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: NVIC
+2019-09-02 18:10:48,326 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: USART
+2019-09-02 18:10:48,326 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: SYS
+2019-09-02 18:10:48,326 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: CAN
+2019-09-02 18:10:48,326 [INFO] BlockDiagram:1862 - set Specific Code input for plugin: RCC
+2019-09-02 18:10:48,327 [INFO] CodeGenerator:583 - code generatio: config db path: C:\ST\STM32CubeIDE_1.0.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_5.3.0.201907110903\\db\
+2019-09-02 18:10:48,452 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp_save
+2019-09-02 18:10:48,500 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\license.tmp
+2019-09-02 18:10:48,519 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp_save
+2019-09-02 18:10:48,585 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\gpio.tmp
+2019-09-02 18:10:48,651 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 18:10:48,651 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for CAN
+2019-09-02 18:10:48,652 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 18:10:48,653 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 18:10:48,654 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for SYS
+2019-09-02 18:10:48,654 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 18:10:48,655 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2019-09-02 18:10:48,657 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for USART
+2019-09-02 18:10:48,658 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 18:10:48,660 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Debug : prepare data for NVIC
+2019-09-02 18:10:48,661 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line test
+2019-09-02 18:10:48,668 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c_save
+2019-09-02 18:10:48,768 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_it.c
+2019-09-02 18:10:48,777 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h_save
+2019-09-02 18:10:48,853 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_it.h
+2019-09-02 18:10:48,861 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c_save
+2019-09-02 18:10:48,944 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\stm32f3xx_hal_msp.c
+2019-09-02 18:10:48,950 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp_save
+2019-09-02 18:10:49,001 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\MXTmpFiles\system.tmp
+2019-09-02 18:10:49,006 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h_save
+2019-09-02 18:10:49,071 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\stm32f3xx_hal_conf.h
+2019-09-02 18:10:49,080 [WARN] IPConfigManager:2562 - IP not found : gpio
+2019-09-02 18:10:49,081 [WARN] CodeGenerator:2617 - IP not found : gpio
+2019-09-02 18:10:49,086 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h_save
+2019-09-02 18:10:49,150 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Inc\main.h
+2019-09-02 18:10:49,160 [INFO] CodeEngine:190 - oldGeneratedFile, C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c_save
+2019-09-02 18:10:49,264 [INFO] CodeEngine:208 - Generated code: C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\Src\main.c
+2019-09-02 18:10:49,730 [INFO] ProjectBuilder:1570 - Time for Copy HAL[1] : 115mS.
+2019-09-02 18:10:49,732 [INFO] ProjectBuilder:2138 - Project Generator version: 3.4.0
+2019-09-02 18:10:50,000 [INFO] ConfigFileManager:879 - The Die is : DIE438
+2019-09-02 18:10:50,003 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] configName ==Arm Cortex-M4
+2019-09-02 18:10:50,089 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="RAM" access="xrw" start="0x20000000" size="12"
+2019-09-02 18:10:50,090 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="CCMRAM" access="rw" start="0x10000000" size="4"
+2019-09-02 18:10:50,091 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] memory ==name="FLASH" access="rx" start="0x8000000" size="64"
+2019-09-02 18:10:50,195 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] namefile= STM32CubeIDE
+2019-09-02 18:10:50,196 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] method name===============update
+2019-09-02 18:10:50,653 [INFO] ProjectBuilder:2232 - Time for Generating toolchain IDE Files: 921mS.
+2019-09-02 18:10:50,655 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 2mS.
+2019-09-02 18:10:50,660 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 0mS.
