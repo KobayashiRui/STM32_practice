@@ -54,10 +54,12 @@ uint8_t TxData[8];
 uint8_t RxData[8];
 int set_point=10000;
 uint32_t TxMailbox;
+uint32_t get_pos_data = 0;
+
 uint8_t motor_num = 1; //odrive axis id
 //uint8_t control_mode = 0x00C;//control mode
-//uint8_t control_mode = 0x009;
-uint8_t control_mode = 0x017;
+uint8_t control_mode = 0x009;//get encoder
+//uint8_t control_mode = 0x017;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -66,6 +68,7 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_CAN_Init(void);
 /* USER CODE BEGIN PFP */
+float bintofloat(uint32_t);
 
 /* USER CODE END PFP */
 
@@ -76,6 +79,7 @@ char tx_data[]="getdata\r\n";
 char tx_data1[]="encoder\r\n";
 char tx_data2[]="vel\r\n";
 int flag = 1;
+char get_pos_data_str[40];
 /* USER CODE END 0 */
 
 /**
@@ -170,12 +174,15 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	HAL_CAN_AddTxMessage(&hcan,&TxHeader,TxData,&TxMailbox);
-	HAL_Delay(1000);
+	HAL_Delay(100);
+	sprintf(get_pos_data_str,"%f\r\n",bintofloat(get_pos_data));
+	HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+	/*
 	  for(int j=0; j< 4; j++){
 		  HAL_UART_Transmit(&huart2,&RxData[j],1,0xFFFF);
 		  HAL_Delay(10);
 	  }
-	  HAL_UART_Transmit(&huart2,tx_data,sizeof(tx_data),0xFFFF);
+	  //HAL_UART_Transmit(&huart2,tx_data,sizeof(tx_data),0xFFFF);
 	  HAL_Delay(10);
 	//HAL_UART_Transmit(&huart2,RxData,8,0xFFFF);
 	  for(int j=4; j< 8; j++){
@@ -184,6 +191,7 @@ int main(void)
 	  }
 	  HAL_UART_Transmit(&huart2,tx_data,sizeof(tx_data),0xFFFF);
 	  HAL_Delay(10);
+	  */
   }
   /* USER CODE END 3 */
 }
@@ -331,6 +339,14 @@ void HAL_CAN_TxMailbox0CompleteCallack(CAN_HandleTypeDef *hcan)
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan_)
 {
   HAL_CAN_GetRxMessage(&hcan,CAN_RX_FIFO0,&RxHeader,RxData);
+  get_pos_data =(
+		  ((RxData[3] << 24) & 0xFF000000)
+		| ((RxData[2] << 16) & 0x00FF0000)
+		| ((RxData[1] << 8)  & 0x0000FF00)
+		| ((RxData[0] << 0)  & 0x000000FF)
+   );
+  //get_pos_data = get_pos_data_buf;
+
 
   //HAL_UART_Transmit(&huart2,&RxHeader.StdId,sizeof(&RxHeader.StdId),0xFFFF);
 
@@ -352,6 +368,11 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan_)
 
 }
 
+float bintofloat(uint32_t x){
+	float f = 0.0f;
+	memcpy(&f, &x, sizeof(f) < sizeof(x) ? sizeof(f): sizeof(x));
+	return f;
+}
 
 /* USER CODE END 4 */
 

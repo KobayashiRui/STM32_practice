@@ -2694,3 +2694,701 @@ Finished building: default.size.stdout
  
 Finished building: stm32_f303k8_can_odrive_test.list
  
+09:49:21 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:178:30: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+    HAL_UART_Transmit(&huart2,tx_data,sizeof(tx_data),0xFFFF);
+                              ^~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c:185:30: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+    HAL_UART_Transmit(&huart2,tx_data,sizeof(tx_data),0xFFFF);
+                              ^~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15040	     36	   1836	  16912	   4210	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+09:50:51 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:185:30: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+    HAL_UART_Transmit(&huart2,tx_data,sizeof(tx_data),0xFFFF);
+                              ^~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15024	     36	   1836	  16896	   4200	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:12:01 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'HAL_CAN_RxFifo0MsgPendingCallback':
+../Src/main.c:351:3: error: expected ';' before 'flag'
+   flag *= -1;
+   ^~~~
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:13:43 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'HAL_CAN_RxFifo0MsgPendingCallback':
+../Src/main.c:351:3: error: expected ';' before 'flag'
+   flag *= -1;
+   ^~~~
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:15:41 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26552	    488	   1872	  28912	   70f0	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:17:40 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26552	    488	   1880	  28920	   70f8	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:22:51 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'HAL_CAN_RxFifo0MsgPendingCallback':
+../Src/main.c:340:29: warning: '<<' in boolean context, did you mean '<' ? [-Wint-in-bool-context]
+   get_pos_data = (RxData[0] << 24) || (RxData[1] << 16) || (RxData[2] << 8) || (RxData[3]);
+                  ~~~~~~~~~~~^~~~~~
+../Src/main.c:340:50: warning: '<<' in boolean context, did you mean '<' ? [-Wint-in-bool-context]
+   get_pos_data = (RxData[0] << 24) || (RxData[1] << 16) || (RxData[2] << 8) || (RxData[3]);
+                                       ~~~~~~~~~~~^~~~~~
+../Src/main.c:340:71: warning: '<<' in boolean context, did you mean '<' ? [-Wint-in-bool-context]
+   get_pos_data = (RxData[0] << 24) || (RxData[1] << 16) || (RxData[2] << 8) || (RxData[3]);
+                                                            ~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26568	    488	   1880	  28936	   7108	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:25:59 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'HAL_CAN_RxFifo0MsgPendingCallback':
+../Src/main.c:342:32: error: invalid operands to binary << (have 'float' and 'int')
+   get_pos_data = (get_pos_data << 8) + RxData[2];
+                                ^~
+../Src/main.c:343:32: error: invalid operands to binary << (have 'float' and 'int')
+   get_pos_data = (get_pos_data << 8) + RxData[1];
+                                ^~
+../Src/main.c:344:32: error: invalid operands to binary << (have 'float' and 'int')
+   get_pos_data = (get_pos_data << 8) + RxData[0];
+                                ^~
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:30:25 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26560	    488	   1880	  28928	   7100	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:32:52 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26560	    488	   1880	  28928	   7100	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:34:15 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'HAL_CAN_RxFifo0MsgPendingCallback':
+../Src/main.c:341:31: error: invalid operands to binary & (have 'float' and 'unsigned int')
+     ((float)(RxData[3] << 24) & 0xFF000000)
+      ~~~~~~~~~~~~~~~~~~~~~~~~ ^
+../Src/main.c:342:31: error: invalid operands to binary & (have 'float' and 'int')
+   | ((float)(RxData[2] << 16) & 0x00FF0000)
+      ~~~~~~~~~~~~~~~~~~~~~~~~ ^
+../Src/main.c:343:31: error: invalid operands to binary & (have 'float' and 'int')
+   | ((float)(RxData[1] << 8)  & 0x0000FF00)
+      ~~~~~~~~~~~~~~~~~~~~~~~  ^
+../Src/main.c:344:31: error: invalid operands to binary & (have 'float' and 'int')
+   | ((float)(RxData[0] << 0)  & 0x000000FF)
+      ~~~~~~~~~~~~~~~~~~~~~~~  ^
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:35:04 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26560	    488	   1880	  28928	   7100	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:35:54 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26560	    488	   1880	  28928	   7100	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:36:16 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26560	    488	   1880	  28928	   7100	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+10:41:15 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26560	    488	   1896	  28944	   7110	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:46:28 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26568	    488	   1904	  28960	   7120	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:47:16 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26504	    496	   1896	  28896	   70e0	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:48:18 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'HAL_CAN_RxFifo0MsgPendingCallback':
+../Src/main.c:341:9: warning: unused variable 'get_pos_data' [-Wunused-variable]
+   float get_pos_data =(float)(
+         ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26552	    496	   1896	  28944	   7110	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:49:35 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26568	    496	   1896	  28960	   7120	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+10:52:32 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'HAL_CAN_RxFifo0MsgPendingCallback':
+../Src/main.c:340:3: error: 'get_pos_data_buf' undeclared (first use in this function); did you mean 'get_pos_data_str'?
+   get_pos_data_buf =(
+   ^~~~~~~~~~~~~~~~
+   get_pos_data_str
+../Src/main.c:340:3: note: each undeclared identifier is reported only once for each function it appears in
+../Src/main.c:342:3: error: invalid operands to binary | (have 'float' and 'float')
+     (float)((RxData[3] << 24) & 0xFF000000)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   | (float)((RxData[2] << 16) & 0x00FF0000)
+   ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:52:39 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'HAL_CAN_RxFifo0MsgPendingCallback':
+../Src/main.c:340:3: error: 'get_pos_data_buf' undeclared (first use in this function); did you mean 'get_pos_data_str'?
+   get_pos_data_buf =(
+   ^~~~~~~~~~~~~~~~
+   get_pos_data_str
+../Src/main.c:340:3: note: each undeclared identifier is reported only once for each function it appears in
+../Src/main.c:342:3: error: invalid operands to binary | (have 'float' and 'float')
+     (float)((RxData[3] << 24) & 0xFF000000)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   | (float)((RxData[2] << 16) & 0x00FF0000)
+   ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:53:05 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'HAL_CAN_RxFifo0MsgPendingCallback':
+../Src/main.c:342:3: error: invalid operands to binary | (have 'float' and 'float')
+     (float)((RxData[3] << 24) & 0xFF000000)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   | (float)((RxData[2] << 16) & 0x00FF0000)
+   ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:59:02 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:36: warning: implicit declaration of function 'bintofloat' [-Wimplicit-function-declaration]
+  sprintf(get_pos_data_str,"%f\r\n",bintofloat(get_pos_data));
+                                    ^~~~~~~~~~
+../Src/main.c:177:29: warning: format '%f' expects argument of type 'double', but argument 3 has type 'int' [-Wformat=]
+  sprintf(get_pos_data_str,"%f\r\n",bintofloat(get_pos_data));
+                            ~^      ~~~~~~~~~~~~~~~~~~~~~~~~
+                            %d
+../Src/main.c:178:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: At top level:
+../Src/main.c:370:7: error: conflicting types for 'bintofloat'
+ float bintofloat(uint32_t x){
+       ^~~~~~~~~~
+../Src/main.c:177:36: note: previous implicit declaration of 'bintofloat' was here
+  sprintf(get_pos_data_str,"%f\r\n",bintofloat(get_pos_data));
+                                    ^~~~~~~~~~
+../Src/main.c: In function 'bintofloat':
+../Src/main.c:372:2: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  memcpy(&f, &x, sizeof(f) < sizeof(x) ? sizeof(f) : sizeof(x));
+  ^~~~~~
+../Src/main.c:372:2: warning: incompatible implicit declaration of built-in function 'memcpy'
+../Src/main.c:372:2: note: include '<string.h>' or provide a declaration of 'memcpy'
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:59:47 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:36: warning: implicit declaration of function 'bintofloat' [-Wimplicit-function-declaration]
+  sprintf(get_pos_data_str,"%f\r\n",bintofloat(get_pos_data));
+                                    ^~~~~~~~~~
+../Src/main.c:177:29: warning: format '%f' expects argument of type 'double', but argument 3 has type 'int' [-Wformat=]
+  sprintf(get_pos_data_str,"%f\r\n",bintofloat(get_pos_data));
+                            ~^      ~~~~~~~~~~~~~~~~~~~~~~~~
+                            %d
+../Src/main.c:178:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Src/main.o: In function `main':
+C:/Users/kobay/Documents/GitHub/STM32_practice/stm32_f303k8_can_odrive_test/Debug/../Src/main.c:177: undefined reference to `bintofloat'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: stm32_f303k8_can_odrive_test.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+11:00:51 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:177:36: warning: implicit declaration of function 'bintofloat' [-Wimplicit-function-declaration]
+  sprintf(get_pos_data_str,"%f\r\n",bintofloat(get_pos_data));
+                                    ^~~~~~~~~~
+../Src/main.c:177:29: warning: format '%f' expects argument of type 'double', but argument 3 has type 'int' [-Wformat=]
+  sprintf(get_pos_data_str,"%f\r\n",bintofloat(get_pos_data));
+                            ~^      ~~~~~~~~~~~~~~~~~~~~~~~~
+                            %d
+../Src/main.c:178:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: At top level:
+../Src/main.c:370:7: error: conflicting types for 'bintofloat'
+ float bintofloat(uint32_t x){
+       ^~~~~~~~~~
+../Src/main.c:177:36: note: previous implicit declaration of 'bintofloat' was here
+  sprintf(get_pos_data_str,"%f\r\n",bintofloat(get_pos_data));
+                                    ^~~~~~~~~~
+../Src/main.c: In function 'bintofloat':
+../Src/main.c:372:2: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  memcpy(&f, &x, sizeof(f) < sizeof(x) ? sizeof(f): sizeof(x));
+  ^~~~~~
+../Src/main.c:372:2: warning: incompatible implicit declaration of built-in function 'memcpy'
+../Src/main.c:372:2: note: include '<string.h>' or provide a declaration of 'memcpy'
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+11:02:41 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:179:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'bintofloat':
+../Src/main.c:373:2: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  memcpy(&f, &x, sizeof(f) < sizeof(x) ? sizeof(f): sizeof(x));
+  ^~~~~~
+../Src/main.c:373:2: warning: incompatible implicit declaration of built-in function 'memcpy'
+../Src/main.c:373:2: note: include '<string.h>' or provide a declaration of 'memcpy'
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26600	    488	   1896	  28984	   7138	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+11:03:26 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:179:28: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart2,get_pos_data_str,sizeof(get_pos_data_str),0xFFFF);
+                            ^~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32f3xx_hal_conf.h:320:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:46,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:1351:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'bintofloat':
+../Src/main.c:373:2: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  memcpy(&f, &x, sizeof(f) < sizeof(x) ? sizeof(f): sizeof(x));
+  ^~~~~~
+../Src/main.c:373:2: warning: incompatible implicit declaration of built-in function 'memcpy'
+../Src/main.c:373:2: note: include '<string.h>' or provide a declaration of 'memcpy'
+arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_f303k8_can_odrive_test.elf
+ 
+arm-none-eabi-objdump -h -S  stm32_f303k8_can_odrive_test.elf  > "stm32_f303k8_can_odrive_test.list"
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26592	    488	   1896	  28976	   7130	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_f303k8_can_odrive_test.list
+ 
+11:10:50 **** Incremental Build of configuration Debug for project stm32_f303k8_can_odrive_test ****
+make -j8 all 
+arm-none-eabi-size   stm32_f303k8_can_odrive_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26592	    488	   1896	  28976	   7130	stm32_f303k8_can_odrive_test.elf
+Finished building: default.size.stdout
+ 

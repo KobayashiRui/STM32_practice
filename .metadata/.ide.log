@@ -4215,3 +4215,4 @@
 2019-09-02 18:10:50,653 [INFO] ProjectBuilder:2232 - Time for Generating toolchain IDE Files: 921mS.
 2019-09-02 18:10:50,655 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 2mS.
 2019-09-02 18:10:50,660 [INFO] ProjectBuilder:1461 - Time for Copy CMSIS : 0mS.
+2019-09-03 10:13:58,525 [INFO] BlockDiagram:1818 - stop enableDisableButtons

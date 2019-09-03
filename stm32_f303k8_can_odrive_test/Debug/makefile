@@ -38,7 +38,7 @@ all: stm32_f303k8_can_odrive_test.elf secondary-outputs
 
 # Tool invocations
 stm32_f303k8_can_odrive_test.elf: $(OBJS) $(USER_OBJS) C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld
-	arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "stm32_f303k8_can_odrive_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can_odrive_test\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can_odrive_test.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
