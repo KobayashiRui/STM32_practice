@@ -37,8 +37,8 @@ stm32_f303k8_can.list \
 all: stm32_f303k8_can.elf secondary-outputs
 
 # Tool invocations
-stm32_f303k8_can.elf: $(OBJS) $(USER_OBJS) C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can\STM32F303K8TX_FLASH.ld
-	arm-none-eabi-gcc -o "stm32_f303k8_can.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+stm32_f303k8_can.elf: $(OBJS) $(USER_OBJS) /Users/rui/Documents/GitHub/STM32_practice/stm32_f303k8_can/STM32F303K8TX_FLASH.ld
+	arm-none-eabi-gcc -o "stm32_f303k8_can.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/rui/Documents/GitHub/STM32_practice/stm32_f303k8_can/STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -1,21 +1,10 @@
-20:59:22 **** Incremental Build of configuration Debug for project stm32_f303k8_can ****
-make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Inc -I../Drivers/CMSIS/Include -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c: In function 'main':
-../Src/main.c:137:7: warning: unused variable 'i' [-Wunused-variable]
-   int i=0;
-       ^
-arm-none-eabi-gcc -o "stm32_f303k8_can.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kobay\Documents\GitHub\STM32_practice\stm32_f303k8_can\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_f303k8_can.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: stm32_f303k8_can.elf
- 
-arm-none-eabi-objdump -h -S  stm32_f303k8_can.elf  > "stm32_f303k8_can.list"
+02:47:46 **** Incremental Build of configuration Debug for project stm32_f303k8_can ****
+make -j3 all 
 arm-none-eabi-size   stm32_f303k8_can.elf 
    text	   data	    bss	    dec	    hex	filename
-  14352	     24	   1840	  16216	   3f58	stm32_f303k8_can.elf
+  14872	     24	   1840	  16736	   4160	stm32_f303k8_can.elf
 Finished building: default.size.stdout
  
-Finished building: stm32_f303k8_can.list
- 
 
-20:59:24 Build Finished. 0 errors, 1 warnings. (took 2s.549ms)
+02:47:46 Build Finished. 0 errors, 0 warnings. (took 193ms)
 

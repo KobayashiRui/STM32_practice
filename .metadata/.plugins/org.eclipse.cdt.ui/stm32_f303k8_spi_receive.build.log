@@ -1,0 +1,10 @@
+03:52:41 **** Incremental Build of configuration Debug for project stm32_f303k8_spi_receive ****
+make -j3 all 
+arm-none-eabi-size   stm32_f303k8_spi_receive.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11468	     20	   1780	  13268	   33d4	stm32_f303k8_spi_receive.elf
+Finished building: default.size.stdout
+ 
+
+03:52:42 Build Finished. 0 errors, 0 warnings. (took 195ms)
+
