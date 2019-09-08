@@ -43,6 +43,8 @@
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi1;
+DMA_HandleTypeDef hdma_spi1_rx;
+DMA_HandleTypeDef hdma_spi1_tx;
 
 UART_HandleTypeDef huart2;
 
@@ -53,6 +55,7 @@ UART_HandleTypeDef huart2;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
@@ -71,9 +74,9 @@ static void MX_USART2_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	uint8_t aTxBuffer1[]={'A','B','C','D','E','F','G','H','I'};
+	uint8_t aTxBuffer1[]={'A','B','C','D','E','F'};
 	uint8_t aTxBuffer2[11]={0};
-	uint8_t aRxBuffer1[9]={0};
+	uint8_t aRxBuffer1[6]={0};
 	uint8_t aRxBuffer2[11]={0};
 	uint8_t flag = 0;
   /* USER CODE END 1 */
@@ -97,6 +100,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_SPI1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
@@ -110,8 +114,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_SPI_TransmitReceive(&hspi1,(uint8_t*)aTxBuffer1,(uint8_t*)aRxBuffer1,9,0xFFFFFFFF);
+	  HAL_SPI_TransmitReceive_DMA(&hspi1, aTxBuffer1, aRxBuffer1, 6);
 	  //何かの処理
+	 // for(int i=0; i < 6; i++){
+	//	  HAL_SPI_TransmitReceive(&hspi1,(uint8_t*)&aTxBuffer1[i],(uint8_t*)&aRxBuffer1[i],1,0xFFFFFFFF);
+	//	  HAL_Delay(1);
+	  //}
+	  HAL_Delay(1);
 
   }
   /* USER CODE END 3 */
@@ -224,6 +233,25 @@ static void MX_USART2_UART_Init(void)
   /* USER CODE BEGIN USART2_Init 2 */
 
   /* USER CODE END USART2_Init 2 */
+
+}
+
+/** 
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void) 
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
+  /* DMA1_Channel3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
 
 }
 

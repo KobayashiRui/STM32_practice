@@ -55,7 +55,7 @@ CAN_TxHeaderTypeDef TxHeader; //Txのヘッダ
 CAN_RxHeaderTypeDef RxHeader; //Rxのヘッダ
 uint8_t TxData[8]; //CANにて送るデータ
 uint8_t RxData[8]; //CANにて受け取ったデータ
-int set_point=10000;
+int set_point=1000;
 uint32_t TxMailbox;
 uint8_t can_id_list[] = {0x00,0x01,0x02,0x03}; //odrive axis node id
 uint8_t can_id = 0;
@@ -64,6 +64,11 @@ uint8_t can_id = 0;
 uint8_t control_mode = 0x017;
 uint8_t cmd_data = 0x00;
 uint8_t can_get_flag = 0; //canを受信したかどうかのflag
+
+//SPI通信関連
+uint8_t aTxBuffer[6]={'A','B','C','D','E','F'};
+uint8_t aRxBuffer[6]={0};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -145,12 +150,9 @@ int main(void)
   {
 	Error_Handler();
   }
+  can_id = 1;
 
 
-
-  //SPI通信関連
-  uint8_t aTxBuffer[6]={0};
-  uint8_t aRxBuffer[6]={0};
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -162,30 +164,30 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 	  //spiの受信待ち
-	  HAL_SPI_TransmitReceive(&hspi2,(uint8_t*)aTxBuffer,(uint8_t*)aRxBuffer,6,0xFFFFFFFF);
+	  //HAL_SPI_TransmitReceive(&hspi2,(uint8_t*)aTxBuffer,(uint8_t*)aRxBuffer,6,0xFFFFFFFF);
+	  //HAL_SPI_TransmitReceive_DMA(&hspi2, aTxBuffer, aRxBuffer, 6);
 	  can_get_flag = 0;
 
 	  //spiで受け取ったデータを分解
-	  can_id = can_id_list[aRxBuffer[0]]; //spiで受け取った値
+	  //can_id = 1;//can_id_list[aRxBuffer[0]]; //spiで受け取った値
 
 	  //can_idが0の場合は何もしない処理
 	  if(can_id == 0){
 		  continue;
 	  }
-
-	  cmd_data = aRxBuffer[1];
+	  cmd_data =1;// aRxBuffer[1];
 	  switch(cmd_data){
 	  	  case 0x01://ポジションを送る
 	  		  can_get_flag = 1;
 	  		  TxHeader.StdId=(can_id << 5) + (0x00C); //can_id, コントロールcmd
-	  		  TxHeader.RTR = 1;//CAN_RTR_DATA;
+	  		  TxHeader.RTR = 0;//CAN_RTR_DATA;
 	  		  TxHeader.IDE = CAN_ID_STD;
 	  		  TxHeader.DLC = 0x08;
 	  		  TxHeader.TransmitGlobalTime = DISABLE;
-	  		  TxData[0] = aRxBuffer[2];
-	  		  TxData[1] = aRxBuffer[3];
-	  		  TxData[2] = aRxBuffer[4];
-	  		  TxData[3] = aRxBuffer[5];
+	  		  TxData[0] = set_point;//aRxBuffer[2];
+	  		  TxData[1] = set_point >> 8;//aRxBuffer[3];
+	  		  TxData[2] = set_point >> 16;//aRxBuffer[4];
+	  		  TxData[3] = set_point >> 24;//aRxBuffer[5];
 	  		  TxData[4] = 0;
 	  		  TxData[5] = 0;
 	  		  TxData[6] = 0;
@@ -213,7 +215,8 @@ int main(void)
 	  	  default:
 	  		 can_get_flag=1;
 	  }
-	  while(!can_get_flag){asm("NOP");}//nopいるか
+	  can_id=2;
+	  //while(!can_get_flag){asm("NOP");}//nopいるか
 
   }
   /* USER CODE END 3 */
@@ -239,9 +242,9 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 16;
-  RCC_OscInitStruct.PLL.PLLN = 336;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
+  RCC_OscInitStruct.PLL.PLLM = 8;
+  RCC_OscInitStruct.PLL.PLLN = 50;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
@@ -255,9 +258,9 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -279,10 +282,10 @@ static void MX_CAN1_Init(void)
 
   /* USER CODE END CAN1_Init 1 */
   hcan1.Instance = CAN1;
-  hcan1.Init.Prescaler = 7;
+  hcan1.Init.Prescaler = 5;
   hcan1.Init.Mode = CAN_MODE_NORMAL;
   hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan1.Init.TimeSeg1 = CAN_BS1_10TQ;
+  hcan1.Init.TimeSeg1 = CAN_BS1_8TQ;
   hcan1.Init.TimeSeg2 = CAN_BS2_1TQ;
   hcan1.Init.TimeTriggeredMode = DISABLE;
   hcan1.Init.AutoBusOff = DISABLE;
@@ -316,10 +319,10 @@ static void MX_CAN2_Init(void)
 
   /* USER CODE END CAN2_Init 1 */
   hcan2.Instance = CAN2;
-  hcan2.Init.Prescaler = 7;
+  hcan2.Init.Prescaler = 5;
   hcan2.Init.Mode = CAN_MODE_NORMAL;
   hcan2.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan2.Init.TimeSeg1 = CAN_BS1_10TQ;
+  hcan2.Init.TimeSeg1 = CAN_BS1_8TQ;
   hcan2.Init.TimeSeg2 = CAN_BS2_1TQ;
   hcan2.Init.TimeTriggeredMode = DISABLE;
   hcan2.Init.AutoBusOff = DISABLE;
@@ -452,6 +455,11 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan_)
 {
   //HAL_CAN_GetRxMessage(&hcan,CAN_RX_FIFO0,&RxHeader,RxData);
 	HAL_CAN_GetRxMessage(hcan_,CAN_RX_FIFO0,&RxHeader,RxData);
+	for(int i=0; i < 6; i++){
+		aRxBuffer[i] = RxData[i];
+	}
+
+
 	can_get_flag = 1;//受信完了フラグ
 
   //HAL_UART_Transmit(&huart2,&RxHeader.StdId,sizeof(&RxHeader.StdId),0xFFFF);

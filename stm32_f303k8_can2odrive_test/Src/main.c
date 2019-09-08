@@ -56,9 +56,9 @@ uint8_t RxData[8];
 int set_point=10000;
 uint32_t TxMailbox;
 uint8_t motor_num = 1; //odrive axis id
-//uint8_t control_mode = 0x00C;//control mode
+uint8_t control_mode = 0x00C;//control mode
 //uint8_t control_mode = 0x009;
-uint8_t control_mode = 0x017;
+//uint8_t control_mode = 0x017;
 
 /* USER CODE END PV */
 
@@ -138,11 +138,11 @@ int main(void)
 	Error_Handler();
   }
   TxHeader.StdId=(motor_num << 5) + (control_mode);
-  TxHeader.RTR = 2;//CAN_RTR_DATA;
+  TxHeader.RTR = 0;//CAN_RTR_DATA;
   TxHeader.IDE = CAN_ID_STD;
   TxHeader.DLC = 0x08;
   TxHeader.TransmitGlobalTime = DISABLE;
-  /*
+
   TxData[0] = set_point;
   TxData[1] = set_point >> 8;
   TxData[2] = set_point >> 16;
@@ -151,7 +151,7 @@ int main(void)
   TxData[5] = 0;
   TxData[6] = 0;
   TxData[7] = 0;
-  */
+  /*
   TxData[0] = 0;
   TxData[1] = 0;
   TxData[2] = 0;
@@ -160,6 +160,7 @@ int main(void)
   TxData[5] = 0;
   TxData[6] = 0;
   TxData[7] = 0;
+  */
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -172,6 +173,7 @@ int main(void)
 
 
 	HAL_CAN_AddTxMessage(&hcan,&TxHeader,TxData,&TxMailbox);
+	/*
 	HAL_Delay(1000);
 	for(int j=0; j< 4; j++){
 		HAL_UART_Transmit(&huart2,&RxData[j],1,0xFFFF);
@@ -185,7 +187,7 @@ int main(void)
 		HAL_Delay(10);
 	}
 	HAL_UART_Transmit(&huart2,tx_data,sizeof(tx_data),0xFFFF);
-	HAL_Delay(10);
+	HAL_Delay(10);*/
   }
   /* USER CODE END 3 */
 }
