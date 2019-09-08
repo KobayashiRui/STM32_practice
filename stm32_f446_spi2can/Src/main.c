@@ -50,7 +50,20 @@ SPI_HandleTypeDef hspi2;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+CAN_FilterTypeDef sFilterConfig; //フィルタ
+CAN_TxHeaderTypeDef TxHeader; //Txのヘッダ
+CAN_RxHeaderTypeDef RxHeader; //Rxのヘッダ
+uint8_t TxData[8]; //CANにて送るデータ
+uint8_t RxData[8]; //CANにて受け取ったデータ
+int set_point=10000;
+uint32_t TxMailbox;
+uint8_t can_id_list[] = {0x00,0x01,0x02,0x03}; //odrive axis node id
+uint8_t can_id = 0;
+//uint8_t control_mode = 0x00C;//control mode
+//uint8_t control_mode = 0x009;
+uint8_t control_mode = 0x017;
+uint8_t cmd_data = 0x00;
+uint8_t can_get_flag = 0; //canを受信したかどうかのflag
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -76,8 +89,6 @@ static void MX_SPI2_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	uint8_t aTxBuffer[]={'A','B','C','D','E','F'};
-	uint8_t aTxBuffer[6]={0};
   /* USER CODE END 1 */
   
 
@@ -104,7 +115,42 @@ int main(void)
   MX_CAN2_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
+  //CANの設定
+  //フィルタの設定
+  sFilterConfig.FilterBank = 0;
+  sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+  sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+  sFilterConfig.FilterIdHigh = 0x0000;
+  sFilterConfig.FilterIdLow = 0x0000;
+  sFilterConfig.FilterMaskIdHigh = 0x0000;
+  sFilterConfig.FilterMaskIdLow = 0x0000;
+  sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
+  sFilterConfig.FilterActivation=ENABLE;
+  sFilterConfig.SlaveStartFilterBank=14;
 
+  //フィルタをcan1に適用
+  if(HAL_CAN_ConfigFilter(&hcan1,&sFilterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  //can1をスタート
+  if(HAL_CAN_Start(&hcan1)!=HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  //can1の割り込みを許可
+  if(HAL_CAN_ActivateNotification(&hcan1,CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK)
+  {
+	Error_Handler();
+  }
+
+
+
+  //SPI通信関連
+  uint8_t aTxBuffer[6]={0};
+  uint8_t aRxBuffer[6]={0};
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,7 +160,61 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_SPI_TransmitReceive(&hspi1,(uint8_t*)aTxBuffer1,(uint8_t*)aRxBuffer1,9,0xFFFFFFFF);
+
+	  //spiの受信待ち
+	  HAL_SPI_TransmitReceive(&hspi2,(uint8_t*)aTxBuffer,(uint8_t*)aRxBuffer,6,0xFFFFFFFF);
+	  can_get_flag = 0;
+
+	  //spiで受け取ったデータを分解
+	  can_id = can_id_list[aRxBuffer[0]]; //spiで受け取った値
+
+	  //can_idが0の場合は何もしない処理
+	  if(can_id == 0){
+		  continue;
+	  }
+
+	  cmd_data = aRxBuffer[1];
+	  switch(cmd_data){
+	  	  case 0x01://ポジションを送る
+	  		  can_get_flag = 1;
+	  		  TxHeader.StdId=(can_id << 5) + (0x00C); //can_id, コントロールcmd
+	  		  TxHeader.RTR = 1;//CAN_RTR_DATA;
+	  		  TxHeader.IDE = CAN_ID_STD;
+	  		  TxHeader.DLC = 0x08;
+	  		  TxHeader.TransmitGlobalTime = DISABLE;
+	  		  TxData[0] = aRxBuffer[2];
+	  		  TxData[1] = aRxBuffer[3];
+	  		  TxData[2] = aRxBuffer[4];
+	  		  TxData[3] = aRxBuffer[5];
+	  		  TxData[4] = 0;
+	  		  TxData[5] = 0;
+	  		  TxData[6] = 0;
+	  		  TxData[7] = 0;
+	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);
+	  		  break;
+
+	  	  case 0x02://ポジションを受け取る
+	  		  TxHeader.StdId=(can_id << 5) + (0x009); //can_id, コントロールcmd
+	  		  TxHeader.RTR = 2;//CAN_RTR_DATA;
+	  		  TxHeader.IDE = CAN_ID_STD;
+	  		  TxHeader.DLC = 0x08;
+	  		  TxHeader.TransmitGlobalTime = DISABLE;
+	  		  TxData[0] = 0;
+	  		  TxData[1] = 0;
+	  		  TxData[2] = 0;
+	  		  TxData[3] = 0;
+	  		  TxData[4] = 0;
+	  		  TxData[5] = 0;
+	  		  TxData[6] = 0;
+	  		  TxData[7] = 0;
+	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);
+	  		  break;
+
+	  	  default:
+	  		 can_get_flag=1;
+	  }
+	  while(!can_get_flag){asm("NOP");}//nopいるか
+
   }
   /* USER CODE END 3 */
 }
@@ -341,6 +441,30 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_CAN_TxMailbox0CompleteCallack(CAN_HandleTypeDef *hcan)
+{
+	  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,1);
+}
+
+//CAN通信の受信割り込み
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan_)
+{
+  //HAL_CAN_GetRxMessage(&hcan,CAN_RX_FIFO0,&RxHeader,RxData);
+	HAL_CAN_GetRxMessage(hcan_,CAN_RX_FIFO0,&RxHeader,RxData);
+	can_get_flag = 1;//受信完了フラグ
+
+  //HAL_UART_Transmit(&huart2,&RxHeader.StdId,sizeof(&RxHeader.StdId),0xFFFF);
+
+  /*
+  for(int j=0; j< 4; j++){
+	  HAL_UART_Transmit(&huart2,&RxData[j],1,0xFFFF);
+	  HAL_Delay(10);
+  }
+*/
+  //HAL_UART_Transmit(&huart2,RxData,4,0xFFFF);
+
+}
 
 /* USER CODE END 4 */
 

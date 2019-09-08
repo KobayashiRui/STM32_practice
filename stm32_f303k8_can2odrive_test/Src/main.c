@@ -112,6 +112,7 @@ int main(void)
   MX_CAN_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+
   sFilterConfig.FilterBank = 0;
   sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
   sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
@@ -137,7 +138,6 @@ int main(void)
 	Error_Handler();
   }
   TxHeader.StdId=(motor_num << 5) + (control_mode);
-  //TxHeader.ExtId=0;
   TxHeader.RTR = 2;//CAN_RTR_DATA;
   TxHeader.IDE = CAN_ID_STD;
   TxHeader.DLC = 0x08;
@@ -169,6 +169,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+
 	HAL_CAN_AddTxMessage(&hcan,&TxHeader,TxData,&TxMailbox);
 	HAL_Delay(1000);
 	for(int j=0; j< 4; j++){
