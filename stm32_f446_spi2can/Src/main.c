@@ -150,7 +150,6 @@ int main(void)
   {
 	Error_Handler();
   }
-  can_id = 1;
 
 
   /* USER CODE END 2 */

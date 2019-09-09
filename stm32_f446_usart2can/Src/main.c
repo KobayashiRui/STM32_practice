@@ -56,7 +56,7 @@ CAN_RxHeaderTypeDef RxHeader; //Rxのヘッダ
 uint8_t TxData[8]; //CANにて送るデータ
 uint8_t RxData[8]; //CANにて受け取ったデータ
 uint32_t TxMailbox;
-uint8_t can_id_list[] = {0x00,0x01,0x02,0x03}; //odrive axis node id
+uint8_t can_id_list[] = {0x00,0x01,0x02,0x03,0x04,0x05,0x06}; //odrive axis node id
 uint8_t can_id = 0;
 //uint8_t control_mode = 0x00C;//位置制御モード
 //uint8_t control_mode = 0x009;//エンコーダ読み込み
@@ -194,12 +194,11 @@ int main(void)
 	  		  TxData[5] = 0;
 	  		  TxData[6] = 0;
 	  		  TxData[7] = 0;
-	  		  //HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
 	  		  break;
 
 	  	  case 0x02://ポジションを受け取る
-	  		  get_can_flag = 1;
 	  		  TxHeader.StdId=(can_id << 5) + (0x009); //can_id, コントロールcmd
 	  		  TxHeader.RTR = 2;//CAN_RTR_DATA;
 	  		  TxHeader.IDE = CAN_ID_STD;
@@ -213,7 +212,25 @@ int main(void)
 	  		  TxData[5] = 0;
 	  		  TxData[6] = 0;
 	  		  TxData[7] = 0;
-	  		  //HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
+	  		  break;
+
+	  	  case 0x03://電圧を受け取る
+	  		  TxHeader.StdId=(can_id << 5) + (0x017); //can_id, コントロールcmd
+	  		  TxHeader.RTR = 2;//CAN_RTR_DATA;
+	  		  TxHeader.IDE = CAN_ID_STD;
+	  		  TxHeader.DLC = 0x08;
+	  		  TxHeader.TransmitGlobalTime = DISABLE;
+	  		  TxData[0] = 0;
+	  		  TxData[1] = 0;
+	  		  TxData[2] = 0;
+	  		  TxData[3] = 0;
+	  		  TxData[4] = 0;
+	  		  TxData[5] = 0;
+	  		  TxData[6] = 0;
+	  		  TxData[7] = 0;
+	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 	  		  break;
 
@@ -441,7 +458,7 @@ void HAL_CAN_TxMailbox0CompleteCallack(CAN_HandleTypeDef *hcan)
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan_)
 {;
 	HAL_CAN_GetRxMessage(hcan_,CAN_RX_FIFO0,&RxHeader,RxData);
-	HAL_UART_Transmit(&huart2,RxData,4,1000);
+	HAL_UART_Transmit(&huart2,RxData,4,1000);//受け取ったデータを送信
 	get_can_flag=1;
 }
 
