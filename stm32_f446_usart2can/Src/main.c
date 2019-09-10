@@ -179,6 +179,7 @@ int main(void)
 	  cmd_data = UART1_Data[1];//uartで受け取った値の8~15bit:canのコマンド
 	  get_can_flag=0; //canデータ受信用のフラグを0に
 	  switch(cmd_data){
+
 	  	  case 0x01://ポジションを送る//位置制御的な感じ
 	  		  get_can_flag = 1;//canデータを受け取らないので1に
 	  		  TxHeader.StdId=(can_id << 5) + (0x00C); //can_id, コントロールcmd
@@ -187,9 +188,9 @@ int main(void)
 	  		  TxHeader.DLC = 0x08;
 	  		  TxHeader.TransmitGlobalTime = DISABLE;
 	  		  TxData[0] = UART1_Data[2];
-	  		  TxData[1] = UART1_Data[3] >>  8;
-	  		  TxData[2] = UART1_Data[4] >> 16;
-	  		  TxData[3] = UART1_Data[5] >> 24;
+	  		  TxData[1] = UART1_Data[3];
+	  		  TxData[2] = UART1_Data[4];
+	  		  TxData[3] = UART1_Data[5];
 	  		  TxData[4] = 0;
 	  		  TxData[5] = 0;
 	  		  TxData[6] = 0;
@@ -232,15 +233,20 @@ int main(void)
 	  		  break;
 
 	  	  case 0x04: //モードを変更する (0x00:IDLEモード )
+	  		  get_can_flag = 1;//canデータを受け取らないので1に
 	  		  TxHeader.StdId=(can_id << 5) + (0x007); //can_id, コントロールcmd
 	  		  TxHeader.RTR = 0;//CAN_RTR_DATA;
 	  		  TxHeader.IDE = CAN_ID_STD;
-	  		  TxHeader.DLC = 0x04;
+	  		  TxHeader.DLC = 0x08;
 	  		  TxHeader.TransmitGlobalTime = DISABLE;
 	  		  TxData[0] = UART1_Data[2];
-	  		  TxData[1] = UART1_Data[3] >> 8;
-	  		  TxData[2] = UART1_Data[4] >> 16;
-	  		  TxData[3] = UART1_Data[5] >> 24;
+	  		  TxData[1] = UART1_Data[3];
+	  		  TxData[2] = UART1_Data[4];
+	  		  TxData[3] = UART1_Data[5];
+	  		  TxData[4] = 0;
+	  		  TxData[5] = 0;
+	  		  TxData[6] = 0;
+	  		  TxData[7] = 0;
 	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
 	  		  break;
 
