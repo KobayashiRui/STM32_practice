@@ -50,13 +50,16 @@ DMA_HandleTypeDef hdma_usart2_rx;
 
 /* USER CODE BEGIN PV */
 //CAN関連
-CAN_FilterTypeDef sFilterConfig; //フィルタ
+CAN_FilterTypeDef sFilterConfig1; //フィルタ
+CAN_FilterTypeDef sFilterConfig2; //フィルタ
 CAN_TxHeaderTypeDef TxHeader; //Txのヘッダ
 CAN_RxHeaderTypeDef RxHeader; //Rxのヘッダ
 uint8_t TxData[8]; //CANにて送るデータ
 uint8_t RxData[8]; //CANにて受け取ったデータ
 uint32_t TxMailbox;
-uint8_t can_id_list[] = {0x00,0x01,0x02,0x03,0x04,0x05,0x06}; //odrive axis node id
+uint8_t can_id_list[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C}; //odrive axis node id
+uint8_t can_separator=0x06;//0x06以下がcan1,
+uint8_t can_number =0;//can1ならflagを0, can2ならflagを1
 uint8_t can_id = 0;
 //uint8_t control_mode = 0x00C;//位置制御モード
 //uint8_t control_mode = 0x009;//エンコーダ読み込み
@@ -120,20 +123,37 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   //CANの設定
-   //フィルタの設定
-   sFilterConfig.FilterBank = 0;
-   sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
-   sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
-   sFilterConfig.FilterIdHigh = 0x0000;
-   sFilterConfig.FilterIdLow = 0x0000;
-   sFilterConfig.FilterMaskIdHigh = 0x0000;
-   sFilterConfig.FilterMaskIdLow = 0x0000;
-   sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
-   sFilterConfig.FilterActivation=ENABLE;
-   sFilterConfig.SlaveStartFilterBank=14;
+   //can1のフィルタの設定
+   sFilterConfig1.FilterBank = 0;
+   sFilterConfig1.FilterMode = CAN_FILTERMODE_IDMASK;
+   sFilterConfig1.FilterScale = CAN_FILTERSCALE_32BIT;
+   sFilterConfig1.FilterIdHigh = 0x0000;
+   sFilterConfig1.FilterIdLow = 0x0000;
+   sFilterConfig1.FilterMaskIdHigh = 0x0000;
+   sFilterConfig1.FilterMaskIdLow = 0x0000;
+   sFilterConfig1.FilterFIFOAssignment = CAN_RX_FIFO0;
+   sFilterConfig1.FilterActivation=ENABLE;
+   sFilterConfig1.SlaveStartFilterBank=14;
+
+   //can2フィルタ
+   sFilterConfig2.FilterBank = 14;
+   sFilterConfig2.FilterMode = CAN_FILTERMODE_IDMASK;
+   sFilterConfig2.FilterScale = CAN_FILTERSCALE_32BIT;
+   sFilterConfig2.FilterIdHigh = 0x0000;
+   sFilterConfig2.FilterIdLow = 0x0000;
+   sFilterConfig2.FilterMaskIdHigh = 0x0000;
+   sFilterConfig2.FilterMaskIdLow = 0x0000;
+   sFilterConfig2.FilterFIFOAssignment = CAN_RX_FIFO0;
+   sFilterConfig2.FilterActivation=ENABLE;
+   //sFilterConfig2.SlaveStartFilterBank=27;
 
    //フィルタをcan1に適用
-   if(HAL_CAN_ConfigFilter(&hcan1,&sFilterConfig) != HAL_OK)
+   if(HAL_CAN_ConfigFilter(&hcan1,&sFilterConfig1) != HAL_OK)
+   {
+     Error_Handler();
+   }
+   //フィルタをcan2に適用
+   if(HAL_CAN_ConfigFilter(&hcan2,&sFilterConfig2) != HAL_OK)
    {
      Error_Handler();
    }
@@ -143,9 +163,19 @@ int main(void)
    {
      Error_Handler();
    }
+   //can2をスタート
+   if(HAL_CAN_Start(&hcan2)!=HAL_OK)
+   {
+     Error_Handler();
+   }
 
    //can1の割り込みを許可
    if(HAL_CAN_ActivateNotification(&hcan1,CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK)
+   {
+ 	Error_Handler();
+   }
+   //can2の割り込みを許可
+   if(HAL_CAN_ActivateNotification(&hcan2,CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK)
    {
  	Error_Handler();
    }
@@ -153,7 +183,7 @@ int main(void)
 
   //HAL_UART_Receive_DMA(&huart2, UART1_Data, 6);//6文字受信したら割り込み発生させる
 
-   uint8_t flag =0;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -176,6 +206,12 @@ int main(void)
 	  if(can_id == 0){
 		  continue;
 	  }
+	  if(can_id <= can_separator){
+		  can_number=0;
+	  }else{
+		  can_number=1;
+	  }
+
 	  cmd_data = UART1_Data[1];//uartで受け取った値の8~15bit:canのコマンド
 	  get_can_flag=0; //canデータ受信用のフラグを0に
 	  switch(cmd_data){
@@ -195,7 +231,11 @@ int main(void)
 	  		  TxData[5] = 0;
 	  		  TxData[6] = 0;
 	  		  TxData[7] = 0;
-	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  if(can_number == 1){
+	  			HAL_CAN_AddTxMessage(&hcan2,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  }else{
+	  			HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  }
 	  		  break;
 
 	  	  case 0x02://ポジションを受け取る
@@ -212,7 +252,11 @@ int main(void)
 	  		  TxData[5] = 0;
 	  		  TxData[6] = 0;
 	  		  TxData[7] = 0;
-	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  if(can_number == 1){
+	  			HAL_CAN_AddTxMessage(&hcan2,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  }else{
+	  			HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  }
 	  		  break;
 
 	  	  case 0x03://電圧を受け取る
@@ -229,7 +273,11 @@ int main(void)
 	  		  TxData[5] = 0;
 	  		  TxData[6] = 0;
 	  		  TxData[7] = 0;
-	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  if(can_number == 1){
+	  			HAL_CAN_AddTxMessage(&hcan2,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  }else{
+	  			HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  }
 	  		  break;
 
 	  	  case 0x04: //モードを変更する (0x00:IDLEモード )
@@ -247,7 +295,11 @@ int main(void)
 	  		  TxData[5] = 0;
 	  		  TxData[6] = 0;
 	  		  TxData[7] = 0;
-	  		  HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  if(can_number == 1){
+	  			HAL_CAN_AddTxMessage(&hcan2,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  }else{
+	  			HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  		  }
 	  		  break;
 
 	  	  default:
