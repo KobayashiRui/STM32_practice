@@ -1,0 +1,10 @@
+01:51:51 **** Incremental Build of configuration Debug for project stm32f405rg_uart_test ****
+make -j3 all 
+arm-none-eabi-size   stm32f405rg_uart_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7596	     20	   1636	   9252	   2424	stm32f405rg_uart_test.elf
+Finished building: default.size.stdout
+ 
+
+01:51:51 Build Finished. 0 errors, 0 warnings. (took 151ms)
+

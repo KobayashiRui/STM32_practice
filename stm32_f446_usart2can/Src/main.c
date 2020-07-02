@@ -58,7 +58,7 @@ uint8_t TxData[8]; //CANにて送るデータ
 uint8_t RxData[8]; //CANにて受け取ったデータ
 uint32_t TxMailbox;
 uint8_t can_id_list[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C}; //odrive axis node id
-uint8_t can_separator=0x06;//0x06以下がcan1,
+uint8_t can_separator=0x06;//0x08以下がcan1,
 uint8_t can_number =0;//can1ならflagを0, can2ならflagを1
 uint8_t can_id = 0;
 //uint8_t control_mode = 0x00C;//位置制御モード
@@ -207,9 +207,9 @@ int main(void)
 		  continue;
 	  }
 	  if(can_id <= can_separator){
-		  can_number=0;
+		  can_number=0;//0;
 	  }else{
-		  can_number=1;
+		  can_number=1;//1;
 	  }
 
 	  cmd_data = UART1_Data[1];//uartで受け取った値の8~15bit:canのコマンド
@@ -240,7 +240,7 @@ int main(void)
 
 	  	  case 0x02://ポジションを受け取る
 	  		  TxHeader.StdId=(can_id << 5) + (0x009); //can_id, コントロールcmd
-	  		  TxHeader.RTR = 2;//CAN_RTR_DATA;
+	  		  TxHeader.RTR = 2;//CAN_RTR_DATA_;
 	  		  TxHeader.IDE = CAN_ID_STD;
 	  		  TxHeader.DLC = 0x08;
 	  		  TxHeader.TransmitGlobalTime = DISABLE;
@@ -283,7 +283,7 @@ int main(void)
 	  	  case 0x04: //モードを変更する (0x00:IDLEモード )
 	  		  get_can_flag = 1;//canデータを受け取らないので1に
 	  		  TxHeader.StdId=(can_id << 5) + (0x007); //can_id, コントロールcmd
-	  		  TxHeader.RTR = 0;//CAN_RTR_DATA;
+	  		  TxHeader.RTR = 2;//CAN_RTR_DATA;
 	  		  TxHeader.IDE = CAN_ID_STD;
 	  		  TxHeader.DLC = 0x08;
 	  		  TxHeader.TransmitGlobalTime = DISABLE;
@@ -296,9 +296,9 @@ int main(void)
 	  		  TxData[6] = 0;
 	  		  TxData[7] = 0;
 	  		  if(can_number == 1){
-	  			HAL_CAN_AddTxMessage(&hcan2,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  			HAL_CAN_AddTxMessage(&hcan2,&TxHeader,TxData,&TxMailbox);
 	  		  }else{
-	  			HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);//todo can2への対応
+	  			HAL_CAN_AddTxMessage(&hcan1,&TxHeader,TxData,&TxMailbox);
 	  		  }
 	  		  break;
 
@@ -370,11 +370,11 @@ static void MX_CAN1_Init(void)
 
   /* USER CODE END CAN1_Init 1 */
   hcan1.Instance = CAN1;
-  hcan1.Init.Prescaler = 6;
+  hcan1.Init.Prescaler = 8;
   hcan1.Init.Mode = CAN_MODE_NORMAL;
-  hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan1.Init.TimeSeg1 = CAN_BS1_11TQ;
-  hcan1.Init.TimeSeg2 = CAN_BS2_2TQ;
+  hcan1.Init.SyncJumpWidth = CAN_SJW_4TQ;
+  hcan1.Init.TimeSeg1 = CAN_BS1_16TQ;
+  hcan1.Init.TimeSeg2 = CAN_BS2_4TQ;
   hcan1.Init.TimeTriggeredMode = DISABLE;
   hcan1.Init.AutoBusOff = DISABLE;
   hcan1.Init.AutoWakeUp = DISABLE;
@@ -407,11 +407,11 @@ static void MX_CAN2_Init(void)
 
   /* USER CODE END CAN2_Init 1 */
   hcan2.Instance = CAN2;
-  hcan2.Init.Prescaler = 6;
+  hcan2.Init.Prescaler = 8;
   hcan2.Init.Mode = CAN_MODE_NORMAL;
-  hcan2.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan2.Init.TimeSeg1 = CAN_BS1_11TQ;
-  hcan2.Init.TimeSeg2 = CAN_BS2_2TQ;
+  hcan2.Init.SyncJumpWidth = CAN_SJW_4TQ;
+  hcan2.Init.TimeSeg1 = CAN_BS1_16TQ;
+  hcan2.Init.TimeSeg2 = CAN_BS2_4TQ;
   hcan2.Init.TimeTriggeredMode = DISABLE;
   hcan2.Init.AutoBusOff = DISABLE;
   hcan2.Init.AutoWakeUp = DISABLE;
@@ -524,9 +524,10 @@ void HAL_CAN_TxMailbox0CompleteCallack(CAN_HandleTypeDef *hcan)
 
 //CAN通信の受信割り込み
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan_)
-{;
+{
 	HAL_CAN_GetRxMessage(hcan_,CAN_RX_FIFO0,&RxHeader,RxData);
-	HAL_UART_Transmit(&huart2,RxData,4,1000);//受け取ったデータを送信
+	HAL_UART_Transmit(&huart2,RxData,sizeof(RxData),1000);//受け取ったデータを送信
+	//HAL_UART_Transmit(&huart2,&RxHeader,4);
 	get_can_flag=1;
 }
 

@@ -45,6 +45,7 @@
 CAN_HandleTypeDef hcan;
 
 UART_HandleTypeDef huart2;
+DMA_HandleTypeDef hdma_usart2_rx;
 
 /* USER CODE BEGIN PV */
 CAN_FilterTypeDef sFilterConfig;
@@ -58,6 +59,7 @@ uint32_t TxMailbox;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_CAN_Init(void);
 /* USER CODE BEGIN PFP */
@@ -69,6 +71,8 @@ static void MX_CAN_Init(void);
 uint8_t uart_data;
 char tx_data[]="get_data\r\n";
 int flag = 1;
+uint8_t get_uart_flag=0;
+uint8_t UART1_Data[2];
 /* USER CODE END 0 */
 
 /**
@@ -100,6 +104,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_USART2_UART_Init();
   MX_CAN_Init();
   /* USER CODE BEGIN 2 */
@@ -126,14 +131,21 @@ int main(void)
   {
 	Error_Handler();
   }
-  TxHeader.StdId=0x323;
-  TxHeader.ExtId=0x01;
+  TxHeader.StdId=0x01;
+  //TxHeader.ExtId=0x01;
   TxHeader.RTR = CAN_RTR_DATA;
   TxHeader.IDE = CAN_ID_STD;
-  TxHeader.DLC = 2;
+  TxHeader.DLC = 8;
   TxHeader.TransmitGlobalTime = DISABLE;
-  TxData[0] = 'A';
-  TxData[1] = 'B';
+  TxData[0] = 0xff;
+  TxData[1] = 0x01;
+  TxData[2] = 0x00;
+  TxData[3] = 0x64;
+  TxData[4] = 0x00;
+  TxData[5] = 0x80;
+  TxData[6] = 0x00;
+  TxData[7] = 0x00;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -143,8 +155,15 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	 HAL_CAN_AddTxMessage(&hcan,&TxHeader,TxData,&TxMailbox);
-	 HAL_Delay(100);
+	  get_uart_flag=0;
+	  //HAL_UART_Receive_DMA(&huart2, UART1_Data, 1);
+	  //受信するまで待つ
+	  //while(!get_uart_flag){}
+	  	  //TxData[6] = UART1_Data[0];
+	  	  //TxData[7] = UART1_Data[1];
+	  	  //HAL_CAN_AddTxMessage(&hcan,&TxHeader,TxData,&TxMailbox);
+	  	  //HAL_Delay(100);
+  	  //}
   }
   /* USER CODE END 3 */
 }
@@ -201,11 +220,11 @@ static void MX_CAN_Init(void)
 
   /* USER CODE END CAN_Init 1 */
   hcan.Instance = CAN;
-  hcan.Init.Prescaler = 6;
+  hcan.Init.Prescaler = 3;
   hcan.Init.Mode = CAN_MODE_NORMAL;
   hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan.Init.TimeSeg1 = CAN_BS1_10TQ;
-  hcan.Init.TimeSeg2 = CAN_BS2_1TQ;
+  hcan.Init.TimeSeg1 = CAN_BS1_9TQ;
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
   hcan.Init.TimeTriggeredMode = DISABLE;
   hcan.Init.AutoBusOff = DISABLE;
   hcan.Init.AutoWakeUp = DISABLE;
@@ -257,6 +276,22 @@ static void MX_USART2_UART_Init(void)
 
 }
 
+/** 
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void) 
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel6_IRQn);
+
+}
+
 /**
   * @brief GPIO Initialization Function
   * @param None
@@ -284,6 +319,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef*UartHandle)
+{
+	HAL_UART_Transmit(&huart2,UART1_Data,1,1000);
+	get_uart_flag=1;
+}
 void HAL_CAN_TxMailbox0CompleteCallack(CAN_HandleTypeDef *hcan)
 {
 	  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,1);
@@ -291,15 +331,15 @@ void HAL_CAN_TxMailbox0CompleteCallack(CAN_HandleTypeDef *hcan)
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan_)
 {
-  HAL_CAN_GetRxMessage(&hcan,CAN_RX_FIFO0,&RxHeader,RxData);
-  HAL_UART_Transmit(&huart2,RxData,2,0xFFFF);
+  HAL_UART_Transmit(&huart2, tx_data, 3,0xFFFF);
+  HAL_CAN_GetRxMessage(&hcan,CAN_RX_FIFO0, &RxHeader,RxData);
+  HAL_UART_Transmit(&huart2,RxData,1,0xFFFF);
   flag *= -1;
   if(flag >0){
 	  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,1);
   }else{
 	  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,0);
   }
-
 }
 /* USER CODE END 4 */
 

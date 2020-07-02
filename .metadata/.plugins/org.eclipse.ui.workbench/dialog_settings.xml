@@ -13,8 +13,8 @@
 		</list>
 	</section>
 	<section name="WorkbenchPreferenceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="5"/>
-		<item key="DIALOG_Y_ORIGIN" value="-173"/>
+		<item key="DIALOG_X_ORIGIN" value="-695"/>
+		<item key="DIALOG_Y_ORIGIN" value="-643"/>
 	</section>
 	<section name="NewWizardAction">
 		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="com.st.stm32cube.common.projectcreation.ui.stm32projectwizard"/>
