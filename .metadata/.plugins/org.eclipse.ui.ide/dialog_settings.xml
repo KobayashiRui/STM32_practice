@@ -2,4 +2,7 @@
 <section name="Workbench">
 	<section name="NewWizardAction">
 	</section>
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="true"/>
+	</section>
 </section>
