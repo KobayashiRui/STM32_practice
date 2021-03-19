@@ -66,10 +66,9 @@ void delay_us (uint16_t us)
 
 void constantAccel(){
 	int   delays[STEPS];
-	//float angle = 0.031416
-	float angle =1 ;
+	float angle = 0.031416;
 	float accel = 0.01;
-	float c0 = 2000 * sqrt(2 * angle / accel) * 0.67703;
+	float c0 = 10000 * sqrt(2 * angle / accel) * 0.67703;
 	float lastDelay = 0;
 	int   highSpeed = 100;
 	for (int i = 0; i < STEPS; i++){
