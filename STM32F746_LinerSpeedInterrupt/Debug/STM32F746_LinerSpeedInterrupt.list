@@ -994,7 +994,7 @@ int main(void)
  8000956:	4b11      	ldr	r3, [pc, #68]	; (800099c <main+0x60>)
  8000958:	4a12      	ldr	r2, [pc, #72]	; (80009a4 <main+0x68>)
  800095a:	60da      	str	r2, [r3, #12]
-  steppers[0].acceleration = 5000;
+  steppers[0].acceleration = 2000;
  800095c:	4b0f      	ldr	r3, [pc, #60]	; (800099c <main+0x60>)
  800095e:	4a12      	ldr	r2, [pc, #72]	; (80009a8 <main+0x6c>)
  8000960:	601a      	str	r2, [r3, #0]
@@ -1036,7 +1036,7 @@ int main(void)
  800099c:	2000002c 	.word	0x2000002c
  80009a0:	08000525 	.word	0x08000525
  80009a4:	08000501 	.word	0x08000501
- 80009a8:	459c4000 	.word	0x459c4000
+ 80009a8:	44fa0000 	.word	0x44fa0000
  80009ac:	20000064 	.word	0x20000064
  80009b0:	ffff15a0 	.word	0xffff15a0
 
@@ -1234,9 +1234,9 @@ static void MX_TIM1_Init(void)
  8000ad0:	4b42      	ldr	r3, [pc, #264]	; (8000bdc <MX_TIM1_Init+0x14c>)
  8000ad2:	4a43      	ldr	r2, [pc, #268]	; (8000be0 <MX_TIM1_Init+0x150>)
  8000ad4:	601a      	str	r2, [r3, #0]
-  htim1.Init.Prescaler = 8-1;
+  htim1.Init.Prescaler = 4-1;
  8000ad6:	4b41      	ldr	r3, [pc, #260]	; (8000bdc <MX_TIM1_Init+0x14c>)
- 8000ad8:	2207      	movs	r2, #7
+ 8000ad8:	2203      	movs	r2, #3
  8000ada:	605a      	str	r2, [r3, #4]
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
  8000adc:	4b3f      	ldr	r3, [pc, #252]	; (8000bdc <MX_TIM1_Init+0x14c>)
