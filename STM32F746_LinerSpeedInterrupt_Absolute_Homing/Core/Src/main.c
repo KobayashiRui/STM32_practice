@@ -230,6 +230,7 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim){
 			s->d = (s->d * (4 * s->n + 1)) / (4 * s->n + 1 -2);
 			s->n--;
 		}
+		s->di = s->d;
 	}
 
 	setNextInterruptInterval();
@@ -253,23 +254,24 @@ void runAndWait(){
 void stepperHoming(int whichMotor){
 	homing_flag |= (1 << whichMotor);
 	//seeking
-	prepareMovement(whichMotor, -10000000);
+	prepareMovement(whichMotor, -1000000000);
 	runAndWait();
 	//pull-off
 	homing_flag &= ~(1 << whichMotor);
-	prepareMovement(whichMotor, 1000);
+	prepareMovement(whichMotor, 6000);
 	runAndWait();
 	//homing
 	homing_flag |= (1 << whichMotor);
-	steppers[0].minStepInterval = 1000;
-	prepareMovement(whichMotor, -10000000);
+	steppers[0].minStepInterval = 100;
+	prepareMovement(whichMotor, -1000000000);
 	runAndWait();
 	//pull-off
 	homing_flag &= ~(1 << whichMotor);
 
-	prepareMovement(whichMotor, 1000);
+	prepareMovement(whichMotor, 6000);
 	runAndWait();
 	steppers[whichMotor].stepPosition = 0;
+	steppers[0].minStepInterval = 10;
 }
 
 
@@ -307,8 +309,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   steppers[0].dirFunc = Dir0;
   steppers[0].stepFunc = Step0;
-  steppers[0].acceleration = 1000;
-  steppers[0].minStepInterval = 1;
+  steppers[0].acceleration = 5000;
+  steppers[0].minStepInterval = 5;
   steppers[0].homing = 0;
 
   HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
@@ -324,13 +326,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  prepareMovement(0, 10000);
+	  prepareAbsoluteMovement(0, 10000);
 	  runAndWait();
 	  HAL_Delay(1);
 	  prepareAbsoluteMovement(0, 15000);
 	  runAndWait();
 	  HAL_Delay(1);
-	  prepareMovement(0, -10000);
+	  prepareAbsoluteMovement(0, 0);
 	  runAndWait();
 	  HAL_Delay(1);
   }
@@ -435,7 +437,7 @@ static void MX_TIM1_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_TIMING;
-  sConfigOC.Pulse = 1000;
+  sConfigOC.Pulse = 100;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
