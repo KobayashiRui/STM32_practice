@@ -22,40 +22,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdlib.h>
+#include <math.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
-
-TIM_HandleTypeDef htim1;
-
-/* USER CODE BEGIN PV */
-
-/* USER CODE END PV */
-
-/* Private function prototypes -----------------------------------------------*/
-void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-static void MX_TIM1_Init(void);
-/* USER CODE BEGIN PFP */
-
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
 typedef struct {
 	float acceleration;
 	volatile unsigned int minStepInterval;
@@ -76,6 +48,37 @@ typedef struct {
 	volatile unsigned int stepCount;
 }stepperInfo;
 
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+#define NUM_STEPPERS 1
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+
+TIM_HandleTypeDef htim1;
+
+/* USER CODE BEGIN PV */
+volatile stepperInfo steppers[NUM_STEPPERS];
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_TIM1_Init(void);
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+
 
 void Step(){
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);
@@ -85,6 +88,8 @@ void Step(){
 void Dir(int dir){
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, dir);
 }
+
+
 
 void resetStepperInfo(stepperInfo * si){
 	si->n = 0;
@@ -97,7 +102,108 @@ void resetStepperInfo(stepperInfo * si){
 	si->movementDone = 0;
 }
 
-volatile stepeerInfo steppers[1];
+
+void resetStepper(volatile stepperInfo* si){
+	si->c0 = si->acceleration;
+	si->d = si->c0;
+	si->di = si->d;
+	si->stepCount = 0;
+	si->n = 0;
+	si->rampUpStepCount = 0;
+	si->movementDone = 0;
+}
+
+volatile uint8_t remainingSteppersFlag = 0;
+
+void prepareMovement(int whichMotor, int steps){
+	volatile stepperInfo* si = &steppers[whichMotor];
+	si->dirFunc( steps < 0 ? 1 : 0);
+	si->dir = steps > 0 ? 1:-1;
+	si->totalSteps = abs(steps);
+	resetStepper(si);
+	remainingSteppersFlag |= (1 << whichMotor);
+}
+
+
+volatile uint8_t nextStepperFlag = 0;
+
+void setNextInterruptInterval(){
+
+	unsigned int mind = 999999;
+	for (int i = 0; i < NUM_STEPPERS; i++){
+		if( ((1 << i) & remainingSteppersFlag) && steppers[i].di < mind ){
+			mind = steppers[i].di;
+		}
+	}
+
+	nextStepperFlag = 0;
+	for (int i = 0; i < NUM_STEPPERS; i ++){
+		if( ((1 << i) & remainingSteppersFlag) && steppers[i].di == mind )
+			nextStepperFlag |= (1 << i);
+	}
+
+	if (remainingSteppersFlag == 0){
+		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 65500);
+	}
+
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, mind);
+
+}
+
+void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim){
+	//HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+	unsigned int tmpCtr = __HAL_TIM_GET_COMPARE(&htim1, TIM_CHANNEL_1);
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 65500);
+
+	for (int i = 0; i < NUM_STEPPERS; i++){
+		if ( ! ( (1 << i) & remainingSteppersFlag )){
+			continue;
+		}
+		if ( ! (nextStepperFlag & (1 << i)) ){
+			steppers[i].di -= tmpCtr;
+			continue;
+		}
+
+		volatile stepperInfo* s = &steppers[i];
+
+		if( (s->stepCount) < (s->totalSteps) ){
+			s->stepFunc();
+			s->stepCount++;
+			s->stepPosition += s->dir;
+			if ( (s->stepCount) >= (s->totalSteps) ){
+				s->movementDone = 1;
+				remainingSteppersFlag &= ~(1 << i);
+			}
+		}
+
+		if (s->rampUpStepCount == 0){
+			s->n++;
+			s->d = s->d - (2*s->d) / (4*s->n +1);
+			if (s->d <= s->minStepInterval ){
+				s->d = s->minStepInterval;
+				s->rampUpStepCount = s->stepCount;
+			}
+			if (s->stepCount >= (s->totalSteps / 2) ){
+				s->rampUpStepCount = s->stepCount;
+			}
+		} else if ( s->stepCount >= s->totalSteps - s->rampUpStepCount) {
+			s->d = (s->d * (4 * s->n + 1)) / (4 * s->n + 1 -2);
+			s->n--;
+		}
+	}
+
+	setNextInterruptInterval();
+
+	__HAL_TIM_SET_COUNTER(&htim1, 0);
+
+
+}
+
+void runAndWait(){
+	setNextInterruptInterval();
+	while(remainingSteppersFlag);
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -130,7 +236,12 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim1);
+  steppers[0].dirFunc = Dir;
+  steppers[0].stepFunc = Step;
+  steppers[0].acceleration = 5000;
+  steppers[0].minStepInterval = 1;
+
+  HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -140,6 +251,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  prepareMovement(0, 60000);
+	  runAndWait();
+	  HAL_Delay(100);
+	  prepareMovement(0, -60000);
+	  runAndWait();
+	  HAL_Delay(1000);
+
   }
   /* USER CODE END 3 */
 }
@@ -163,8 +281,19 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 16;
+  RCC_OscInitStruct.PLL.PLLN = 192;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+  RCC_OscInitStruct.PLL.PLLQ = 2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Activate the Over-Drive mode
+  */
+  if (HAL_PWREx_EnableOverDrive() != HAL_OK)
   {
     Error_Handler();
   }
@@ -172,12 +301,12 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
   {
     Error_Handler();
   }
@@ -204,7 +333,7 @@ static void MX_TIM1_Init(void)
 
   /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 16-1;
+  htim1.Init.Prescaler = 8-1;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim1.Init.Period = 65535;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -231,11 +360,11 @@ static void MX_TIM1_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_TIMING;
-  sConfigOC.Pulse = 0;
+  sConfigOC.Pulse = 1000;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  sConfigOC. OCIdleState = TIM_OCIDLESTATE_RESET;
+  sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
   if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
   {
