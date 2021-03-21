@@ -98,8 +98,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 
 void Step0(){
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);
+	//pull+
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);
+	/*
+	 * pull-
+	 * HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);
+	 * HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
+	 */
 }
 
 void Dir0(int dir){
@@ -310,8 +316,13 @@ int main(void)
   steppers[0].dirFunc = Dir0;
   steppers[0].stepFunc = Step0;
   steppers[0].acceleration = 5000;
-  steppers[0].minStepInterval = 5;
+  steppers[0].minStepInterval = 10;
   steppers[0].homing = 0;
+
+  //pull+
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_SET);
+  //pull-
+  //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET);
 
   HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
 
