@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000b4d4  00000000  00000000  0002003c  2**0
+ 12 .debug_info   0000b4d6  00000000  00000000  0002003c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001803  00000000  00000000  0002b510  2**0
+ 13 .debug_abbrev 00001814  00000000  00000000  0002b512  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000a60  00000000  00000000  0002cd18  2**3
+ 14 .debug_aranges 00000a60  00000000  00000000  0002cd28  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 000009a8  00000000  00000000  0002d778  2**3
+ 15 .debug_ranges 000009a8  00000000  00000000  0002d788  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00024ee1  00000000  00000000  0002e120  2**0
+ 16 .debug_macro  00024ee1  00000000  00000000  0002e130  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000b460  00000000  00000000  00053001  2**0
+ 17 .debug_line   0000b460  00000000  00000000  00053011  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000e9a2d  00000000  00000000  0005e461  2**0
+ 18 .debug_str    000e9a2d  00000000  00000000  0005e471  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  00147e8e  2**0
+ 19 .comment      00000053  00000000  00000000  00147e9e  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002b10  00000000  00000000  00147ee4  2**2
+ 20 .debug_frame  00002b10  00000000  00000000  00147ef4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -413,6 +413,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 void Step0(){
  8000560:	b580      	push	{r7, lr}
  8000562:	af00      	add	r7, sp, #0
+	//pull+
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
  8000564:	2200      	movs	r2, #0
  8000566:	f44f 5180 	mov.w	r1, #4096	; 0x1000
@@ -423,6 +424,11 @@ void Step0(){
  8000572:	f44f 5180 	mov.w	r1, #4096	; 0x1000
  8000576:	4802      	ldr	r0, [pc, #8]	; (8000580 <Step0+0x20>)
  8000578:	f001 f8d8 	bl	800172c <HAL_GPIO_WritePin>
+	/*
+	 * pull-
+	 * HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);
+	 * HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
+	 */
 }
  800057c:	bf00      	nop
  800057e:	bd80      	pop	{r7, pc}
@@ -1303,11 +1309,14 @@ int main(void)
  8000ba6:	2200      	movs	r2, #0
  8000ba8:	741a      	strb	r2, [r3, #16]
 
+  //pull+
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_SET);
  8000baa:	2201      	movs	r2, #1
  8000bac:	f44f 6180 	mov.w	r1, #1024	; 0x400
  8000bb0:	481d      	ldr	r0, [pc, #116]	; (8000c28 <main+0xb0>)
  8000bb2:	f000 fdbb 	bl	800172c <HAL_GPIO_WritePin>
+  //pull-
+  //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET);
 
   HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
  8000bb6:	2100      	movs	r1, #0
