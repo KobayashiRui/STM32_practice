@@ -36,13 +36,20 @@ typedef struct {
 
 	uint8_t homing;
 	unsigned int c0;
-	long long stepPosition;
+	volatile int stepPosition;
 
 	volatile int dir; // 1 or -1
+	volatile int dir_inv; //set 1 to reverse the dir
+
+	volatile int pull_off; //set pull_off distance
+
+	volatile int seeking_vel;
+	volatile int homing_vel;
+
 	volatile unsigned int totalSteps;
+
 	volatile char movementDone;
 	volatile unsigned int rampUpStepCount;
-
 	volatile unsigned int n; // index
 	volatile float d; // current interval length
 	volatile unsigned long di; // d -> unsigned  di
@@ -87,6 +94,7 @@ static void MX_TIM1_Init(void);
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 
+	//stepper 0 end stop senssor
 	if(GPIO_Pin == GPIO_PIN_9 ){
 		if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9)){
 			end_stop_state |= 1;
@@ -138,17 +146,27 @@ void resetStepper(volatile stepperInfo* si){
 volatile uint8_t remainingSteppersFlag = 0;
 
 void prepareMovement(int whichMotor, int steps){
+	if(step == 0){
+		return;
+	}
+
 	volatile stepperInfo* si = &steppers[whichMotor];
-	si->dirFunc( steps < 0 ? 1 : 0);
-	si->dir = steps > 0 ? 1:-1;
+	if(si->dir_inv){
+		si->dirFunc( steps < 0 ? 0 : 1);
+		si->dir = steps > 0 ? -1:1;
+	}else{
+		si->dirFunc( steps < 0 ? 1 : 0);
+		si->dir = steps > 0 ? 1:-1;
+	}
+
 	si->totalSteps = abs(steps);
 	resetStepper(si);
 	remainingSteppersFlag |= (1 << whichMotor);
 }
 
-void prepareAbsoluteMovement(int whichMotor, long long absolute_steps){
+void prepareAbsoluteMovement(int whichMotor, int absolute_steps){
 	volatile stepperInfo* si = &steppers[whichMotor];
-	long long steps = absolute_steps - si->stepPosition;
+	int steps = absolute_steps - si->stepPosition;
 	if(steps == 0){
 		return;
 	}
@@ -260,24 +278,26 @@ void runAndWait(){
 void stepperHoming(int whichMotor){
 	homing_flag |= (1 << whichMotor);
 	//seeking
+	steppers[whichMotor].minStepInterval = steppers[whichMotor].seeking_vel;
 	prepareMovement(whichMotor, -1000000000);
 	runAndWait();
 	//pull-off
 	homing_flag &= ~(1 << whichMotor);
-	prepareMovement(whichMotor, 6000);
+	prepareMovement(whichMotor, stepper[whichMotor].pull_off);
 	runAndWait();
 	//homing
 	homing_flag |= (1 << whichMotor);
-	steppers[0].minStepInterval = 100;
+	steppers[0].minStepInterval = steppers[whichMotor].homing_vel;
 	prepareMovement(whichMotor, -1000000000);
 	runAndWait();
 	//pull-off
 	homing_flag &= ~(1 << whichMotor);
-
-	prepareMovement(whichMotor, 6000);
+	prepareMovement(whichMotor, stepper[whichMotor].pull_off);
 	runAndWait();
+
 	steppers[whichMotor].stepPosition = 0;
-	steppers[0].minStepInterval = 10;
+	steppers[whichMotor].homing = 1;
+	steppers[0].minStepInterval = 100;
 }
 
 
@@ -313,16 +333,20 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
+  //Set stepper 1
   steppers[0].dirFunc = Dir0;
   steppers[0].stepFunc = Step0;
   steppers[0].acceleration = 5000;
-  steppers[0].minStepInterval = 10;
+  steppers[0].minStepInterval = 100;
   steppers[0].homing = 0;
-
+   //Stepper 1 enable
   //pull+
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_SET);
   //pull-
   //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET);
+
+
+
 
   HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
 
