@@ -368,26 +368,26 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
  800050a:	88fb      	ldrh	r3, [r7, #6]
  800050c:	f5b3 7f00 	cmp.w	r3, #512	; 0x200
  8000510:	d119      	bne.n	8000546 <HAL_GPIO_EXTI_Callback+0x46>
-		if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9)){
+		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9)){
  8000512:	f44f 7100 	mov.w	r1, #512	; 0x200
  8000516:	480e      	ldr	r0, [pc, #56]	; (8000550 <HAL_GPIO_EXTI_Callback+0x50>)
  8000518:	f000 fcbe 	bl	8000e98 <HAL_GPIO_ReadPin>
  800051c:	4603      	mov	r3, r0
  800051e:	2b00      	cmp	r3, #0
- 8000520:	d104      	bne.n	800052c <HAL_GPIO_EXTI_Callback+0x2c>
+ 8000520:	d004      	beq.n	800052c <HAL_GPIO_EXTI_Callback+0x2c>
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
  8000522:	2201      	movs	r2, #1
  8000524:	2180      	movs	r1, #128	; 0x80
  8000526:	480b      	ldr	r0, [pc, #44]	; (8000554 <HAL_GPIO_EXTI_Callback+0x54>)
  8000528:	f000 fcce 	bl	8000ec8 <HAL_GPIO_WritePin>
 		}
-		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9)){
+		if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9)){
  800052c:	f44f 7100 	mov.w	r1, #512	; 0x200
  8000530:	4807      	ldr	r0, [pc, #28]	; (8000550 <HAL_GPIO_EXTI_Callback+0x50>)
  8000532:	f000 fcb1 	bl	8000e98 <HAL_GPIO_ReadPin>
  8000536:	4603      	mov	r3, r0
  8000538:	2b00      	cmp	r3, #0
- 800053a:	d004      	beq.n	8000546 <HAL_GPIO_EXTI_Callback+0x46>
+ 800053a:	d104      	bne.n	8000546 <HAL_GPIO_EXTI_Callback+0x46>
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
  800053c:	2200      	movs	r2, #0
  800053e:	2180      	movs	r1, #128	; 0x80
@@ -642,8 +642,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
  80006ae:	4b0d      	ldr	r3, [pc, #52]	; (80006e4 <MX_GPIO_Init+0xac>)
  80006b0:	613b      	str	r3, [r7, #16]
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
- 80006b2:	2300      	movs	r3, #0
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+ 80006b2:	2302      	movs	r3, #2
  80006b4:	617b      	str	r3, [r7, #20]
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
  80006b6:	f107 030c 	add.w	r3, r7, #12

@@ -384,8 +384,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			//HAL_SPI_Transmit(&hspi1, aTxBuffer, 3, 100);
 			//HAL_SPI_Receive(&hspi1, aRxBuffer, 11, 100);
 			//HAL_SPI_TransmitReceive(&hspi1, aTxBuffer, aRxBuffer, 14, 200);
-			HAL_SPI_TransmitReceive_DMA(&hspi1, aTxBuffer, aRxBuffer, 14);
- 8000526:	230e      	movs	r3, #14
+			HAL_SPI_TransmitReceive_DMA(&hspi1, aTxBuffer, aRxBuffer, 7);
+ 8000526:	2307      	movs	r3, #7
  8000528:	4a06      	ldr	r2, [pc, #24]	; (8000544 <HAL_GPIO_EXTI_Callback+0x44>)
  800052a:	4907      	ldr	r1, [pc, #28]	; (8000548 <HAL_GPIO_EXTI_Callback+0x48>)
  800052c:	4807      	ldr	r0, [pc, #28]	; (800054c <HAL_GPIO_EXTI_Callback+0x4c>)

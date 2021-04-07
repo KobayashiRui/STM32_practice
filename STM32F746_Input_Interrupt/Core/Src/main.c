@@ -59,10 +59,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 
 	if(GPIO_Pin == GPIO_PIN_9 ){
-		if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9)){
+		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9)){
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
 		}
-		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9)){
+		if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9)){
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
 		}
 	}
@@ -179,7 +179,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : PC9 */
   GPIO_InitStruct.Pin = GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/

@@ -1,0 +1,5 @@
+main.c:61:6:HAL_SPI_TxRxCpltCallback	8	static
+main.c:65:6:HAL_SPI_ErrorCallback	0	static
+main.c:120:6:SystemClock_Config	96	static,ignoring_inline_asm
+main.c:74:5:main	40	static,ignoring_inline_asm
+main.c:238:6:Error_Handler	0	static,ignoring_inline_asm

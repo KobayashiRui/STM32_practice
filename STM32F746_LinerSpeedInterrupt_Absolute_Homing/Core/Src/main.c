@@ -107,6 +107,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 void Step0(){
 	//pull+
+
+
+
+
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);
 	/*
@@ -146,10 +150,9 @@ void resetStepper(volatile stepperInfo* si){
 volatile uint8_t remainingSteppersFlag = 0;
 
 void prepareMovement(int whichMotor, int steps){
-	if(step == 0){
+	if(steps == 0){
 		return;
 	}
-
 	volatile stepperInfo* si = &steppers[whichMotor];
 	if(si->dir_inv){
 		si->dirFunc( steps < 0 ? 0 : 1);
@@ -279,25 +282,31 @@ void stepperHoming(int whichMotor){
 	homing_flag |= (1 << whichMotor);
 	//seeking
 	steppers[whichMotor].minStepInterval = steppers[whichMotor].seeking_vel;
-	prepareMovement(whichMotor, -1000000000);
+	prepareMovement(whichMotor, -100000000);
 	runAndWait();
+	HAL_Delay(500);
 	//pull-off
+
 	homing_flag &= ~(1 << whichMotor);
-	prepareMovement(whichMotor, stepper[whichMotor].pull_off);
+	prepareMovement(whichMotor, steppers[whichMotor].pull_off);
 	runAndWait();
+	HAL_Delay(500);
 	//homing
+
 	homing_flag |= (1 << whichMotor);
-	steppers[0].minStepInterval = steppers[whichMotor].homing_vel;
-	prepareMovement(whichMotor, -1000000000);
+	steppers[whichMotor].minStepInterval = steppers[whichMotor].homing_vel;
+	prepareMovement(whichMotor, -100000000);
 	runAndWait();
+	HAL_Delay(500);
 	//pull-off
 	homing_flag &= ~(1 << whichMotor);
-	prepareMovement(whichMotor, stepper[whichMotor].pull_off);
+	prepareMovement(whichMotor, steppers[whichMotor].pull_off);
 	runAndWait();
+	HAL_Delay(500);
 
 	steppers[whichMotor].stepPosition = 0;
 	steppers[whichMotor].homing = 1;
-	steppers[0].minStepInterval = 100;
+	steppers[whichMotor].minStepInterval = 100;
 }
 
 
@@ -339,6 +348,10 @@ int main(void)
   steppers[0].acceleration = 5000;
   steppers[0].minStepInterval = 100;
   steppers[0].homing = 0;
+  steppers[0].dir_inv = 1;
+  steppers[0].seeking_vel = 100;
+  steppers[0].homing_vel = 200;
+  steppers[0].pull_off = 500;
    //Stepper 1 enable
   //pull+
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_SET);
@@ -348,10 +361,11 @@ int main(void)
 
 
 
+
   HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
 
-  stepperHoming(0);
-  HAL_Delay(3000);
+  //stepperHoming(0);
+  //HAL_Delay(3000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -363,13 +377,13 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  prepareAbsoluteMovement(0, 10000);
 	  runAndWait();
-	  HAL_Delay(1);
-	  prepareAbsoluteMovement(0, 15000);
+	  HAL_Delay(100);
+	  prepareAbsoluteMovement(0, -10000);
 	  runAndWait();
-	  HAL_Delay(1);
-	  prepareAbsoluteMovement(0, 0);
-	  runAndWait();
-	  HAL_Delay(1);
+	  HAL_Delay(100);
+	  //prepareAbsoluteMovement(0, 0);
+	  //runAndWait();
+	  //HAL_Delay(100);
   }
   /* USER CODE END 3 */
 }
@@ -472,7 +486,7 @@ static void MX_TIM1_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_TIMING;
-  sConfigOC.Pulse = 100;
+  sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;

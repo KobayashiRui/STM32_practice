@@ -75,7 +75,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			//HAL_SPI_Transmit(&hspi1, aTxBuffer, 3, 100);
 			//HAL_SPI_Receive(&hspi1, aRxBuffer, 11, 100);
 			//HAL_SPI_TransmitReceive(&hspi1, aTxBuffer, aRxBuffer, 14, 200);
-			HAL_SPI_TransmitReceive_DMA(&hspi1, aTxBuffer, aRxBuffer, 14);
+			HAL_SPI_TransmitReceive_DMA(&hspi1, aTxBuffer, aRxBuffer, 7);
 		}
 	}
 }
