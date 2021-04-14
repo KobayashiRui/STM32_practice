@@ -75,7 +75,7 @@ TIM_HandleTypeDef htim1;
 volatile stepperInfo steppers[NUM_STEPPERS];
 uint8_t end_stop_state = 0;
 uint8_t homing_flag = 0;
-
+uint8_t timer1_busy = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -106,11 +106,11 @@ void Step0(){
 	//pull+
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);
-	/*
-	 * pull-
-	 * HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);
-	 * HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
-	 */
+
+	//pull-
+	//HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);
+	//HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
+
 }
 void Dir0(int dir){
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, dir);
@@ -175,7 +175,7 @@ volatile uint8_t nextStepperFlag = 0;
 
 void setNextInterruptInterval(){
 
-	unsigned int mind = 999999;
+	unsigned int mind = 65535;
 	for (int i = 0; i < NUM_STEPPERS; i++){
 		if( ((1 << i) & remainingSteppersFlag) && steppers[i].di < mind ){
 			mind = steppers[i].di;
@@ -193,14 +193,16 @@ void setNextInterruptInterval(){
 	}
 
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, mind);
+	//__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 100);
 
 }
 
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim){
-	//HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
-	unsigned int tmpCtr = __HAL_TIM_GET_COMPARE(&htim1, TIM_CHANNEL_1);
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 65500);
 
+	HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
+	unsigned int tmpCtr = __HAL_TIM_GET_COMPARE(&htim1, TIM_CHANNEL_1);
+	//__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 65500);
 
 	for (int i = 0; i < NUM_STEPPERS; i++){
 		if ( ! ( (1 << i) & remainingSteppersFlag )){
@@ -250,9 +252,12 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim){
 		s->di = s->d;
 	}
 
-	setNextInterruptInterval();
 
+	setNextInterruptInterval();
+	//__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 100);
 	__HAL_TIM_SET_COUNTER(&htim1, 0);
+	HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
+
 
 
 }
@@ -332,8 +337,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   steppers[0].dirFunc = Dir0;
   steppers[0].stepFunc = Step0;
-  steppers[0].acceleration = 5000;
-  steppers[0].minStepInterval = 100;
+  steppers[0].acceleration = 10;
+  steppers[0].minStepInterval = 10000;
   steppers[0].homing = 0;
   steppers[0].dir_inv = 1;
   steppers[0].seeking_vel = 100;
@@ -341,7 +346,7 @@ int main(void)
   steppers[0].pull_off = 500;
 
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_SET);
-
+  __HAL_TIM_SET_COUNTER(&htim1, 0);
   HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
 
   /* USER CODE END 2 */
@@ -434,7 +439,7 @@ static void MX_TIM1_Init(void)
 
   /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 192-1;
+  htim1.Init.Prescaler = 1920-1;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim1.Init.Period = 65535;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -461,8 +466,8 @@ static void MX_TIM1_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_TIMING;
-  sConfigOC.Pulse = 100;
-  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.Pulse = 10;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_LOW;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
@@ -503,9 +508,13 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PC10 PC11 PC12 */
   GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12;
@@ -513,6 +522,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
