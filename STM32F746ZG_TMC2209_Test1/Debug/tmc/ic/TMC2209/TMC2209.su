@@ -1,0 +1,11 @@
+../tmc/ic/TMC2209/TMC2209.c:18:6:tmc2209_writeInt	32	static
+../tmc/ic/TMC2209/TMC2209.c:39:9:tmc2209_readInt	32	static
+../tmc/ic/TMC2209/TMC2209.c:74:6:tmc2209_init	32	static
+../tmc/ic/TMC2209/TMC2209.c:91:13:writeConfiguration	24	static
+../tmc/ic/TMC2209/TMC2209.c:131:6:tmc2209_periodicJob	16	static
+../tmc/ic/TMC2209/TMC2209.c:142:6:tmc2209_setRegisterResetState	24	static
+../tmc/ic/TMC2209/TMC2209.c:148:6:tmc2209_setCallback	16	static
+../tmc/ic/TMC2209/TMC2209.c:153:9:tmc2209_reset	24	static
+../tmc/ic/TMC2209/TMC2209.c:171:9:tmc2209_restore	16	static
+../tmc/ic/TMC2209/TMC2209.c:182:9:tmc2209_get_slave	16	static
+../tmc/ic/TMC2209/TMC2209.c:187:6:tmc2209_set_slave	16	static
