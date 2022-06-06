@@ -706,6 +706,7 @@ int main(void)
  8000752:	f003 fcbc 	bl	80040ce <tmc2209_readInt>
  8000756:	4603      	mov	r3, r0
  8000758:	607b      	str	r3, [r7, #4]
+	  //tmc2209_writeInt(&TMC2209, );
 	  printf("SG_RESULT: %ld\r\n", value);
  800075a:	6879      	ldr	r1, [r7, #4]
  800075c:	4805      	ldr	r0, [pc, #20]	; (8000774 <main+0x6c>)
